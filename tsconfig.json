@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "lib": ["es6", "es2017.object"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "strict": true,
+    "target": "esnext",
+    "baseUrl": "./src",
+    "paths": {
+      "@util": ["util/index.js"],
+      "@util/*": ["util/*"],
+      "@router": ["router/index.js"],
+      "@service": ["service/index.js"],
+      "@service/*": ["service/*"],
+      "@ui": ["ui/index.js"],
+      "@hooks": ["hooks/index.js"],
+      "@components/*": ["components/*"],
+      "@contexts/*": ["contexts/*"],
+      "@images/*": ["@images/*"],
+      "@native": ["native/index.ts"],
+      "@native/*": ["native/*"],
+      "@actions/*": ["actions/*"],
+      "@features/*": ["features/*"],
+      "@pages/*": ["pages/*"],
+      "@pages": ["pages/index"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}
