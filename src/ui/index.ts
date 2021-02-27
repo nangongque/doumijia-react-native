@@ -26,8 +26,9 @@ export {
 
 export { WebView } from 'react-native-webview'
 export { default as HTML } from 'react-native-render-html'
-export { LinearGradient } from 'react-native-linear-gradient'
+export LinearGradient from 'react-native-linear-gradient'
 export { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context'
-// export { default as Flex, Row, Column } from './flex'
-// export { default as MyText, weights as fontWeights } from './myText'
+export { default as Flex, Row, Column } from './flex'
+export { default as MyText, weights as fontWeights } from './myText'
 export { default as Divider } from './divider'
+export { default as Linear } from './linear'

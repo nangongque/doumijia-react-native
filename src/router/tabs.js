@@ -19,7 +19,7 @@ function TabScreen() {
           let iconName
           switch (route.name) {
             case 'Home':
-              iconName = focused ? 'ios-cloud-done' : 'ios-cloud'
+              iconName = focused ? 'home' : 'home-outline'
               break
             case 'Friend':
               iconName = focused ? 'ios-people' : 'ios-people-outline'
@@ -31,7 +31,7 @@ function TabScreen() {
               iconName = focused ? 'ios-cart' : 'ios-cart-outline'
               break
             case 'Mine':
-              iconName = focused ? 'ios-paper-plane' : 'ios-paper-plane-outline'
+              iconName = focused ? 'person' : 'person-outline'
               break
           }
           return <Ionicons name={iconName} size={size} color={color} />
@@ -45,7 +45,7 @@ function TabScreen() {
       <Tab.Screen
         name="Home"
         component={HomeScreen}
-        options={{ tabBarLabel: '资讯' }}
+        options={{ tabBarLabel: '发现' }}
       />
       <Tab.Screen
         name="Friend"
@@ -60,7 +60,7 @@ function TabScreen() {
       <Tab.Screen
         name="Market"
         component={MarketScreen}
-        options={{ tabBarLabel: '市集' }}
+        options={{ tabBarLabel: '商城' }}
       />
       <Tab.Screen
         name="Mine"

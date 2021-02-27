@@ -1,5 +1,3 @@
-import { ViewStyle } from 'react-native'
-
 declare interface FlexProps {
   // 布局方向
   direction?: 'column' | 'row'
@@ -25,5 +23,22 @@ declare interface FlexProps {
   children?: React.ReactNode
   linear?: any
   elevation?: boolean
-  style?: ViewStyle
+}
+
+declare type FontFamily = 'normal' | 'beba'
+// declare type FontColor = keyof typeof textColors
+declare type Weight = 'light' | 'normal' | 'medium' | 'semibold' | 'bold'
+
+declare interface MyTextProps {
+  /** font family, normal | beba, default normal */
+  family?: FontFamily
+  /** 文字颜色，默认 black */
+  color?: string
+  /** 字号， 并为字体设置行高, 默认 12 */
+  size?: number
+  /** 字重  default normal */
+  weight?: Weight
+  /** 自定义行高，用来覆盖字号映射的行高 */
+  height?: number
+  children: string | React.ReactNode
 }

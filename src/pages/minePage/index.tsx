@@ -1,15 +1,12 @@
 import React from 'react'
-import { View, Text, Button } from 'react-native'
+import { Column } from '@ui'
+import { MineHeader } from './components/MineHeader'
 // 我的
 const MineScreen = ({ navigation }) => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>MineScreen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Detail')}
-      />
-    </View>
+    <Column>
+      <MineHeader />
+    </Column>
   )
 }
 

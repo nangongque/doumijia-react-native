@@ -12,7 +12,11 @@ function elevationShadowStyle() {
   }
 }
 
-const Flex: React.FC<FlexProps> = ({
+type Props = FlexProps & {
+  style?: ViewStyle
+}
+
+const Flex: React.FC<Props> = ({
   style,
   linear,
   children,
@@ -85,11 +89,11 @@ const Flex: React.FC<FlexProps> = ({
 export default Flex
 
 //
-export const Column: React.FC<FlexProps> = (props) => (
+export const Column: React.FC<Props> = (props) => (
   <Flex direction="column" {...props} />
 )
 
 //
-export const Row: React.FC<FlexProps> = (props) => (
+export const Row: React.FC<Props> = (props) => (
   <Flex direction="row" align="center" {...props} />
 )
