@@ -40,5 +40,28 @@ declare interface MyTextProps {
   weight?: Weight
   /** 自定义行高，用来覆盖字号映射的行高 */
   height?: number
+  textAlign?: 'center'
   children: string | React.ReactNode
+}
+
+declare interface AvatarProps {
+  size?: number
+  avatar?: string
+  disabled?: boolean
+  userId?: number
+}
+
+declare interface DividerProps {
+  /**
+   * divider height, default hairlineWidth
+   */
+  height?: number
+  /**
+   * divider color, default transparent
+   */
+  color?: string
+}
+
+declare interface BadgeProps {
+  number: number
 }

@@ -22,4 +22,4 @@ module.exports = {
   globals: {
     pushToast: 'readonly',
   },
-};
+}

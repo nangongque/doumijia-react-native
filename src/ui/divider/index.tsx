@@ -2,19 +2,11 @@ import React from 'react'
 import { ViewStyle } from 'react-native'
 import { View, StyleSheet } from '@ui'
 
-interface DividerProps {
-  /**
-   * divider height, default hairlineWidth
-   */
-  height?: number
-  /**
-   * divider color, default transparent
-   */
-  color?: string
+type Props = DividerProps & {
   style?: ViewStyle
 }
 
-const Divider: React.FC<DividerProps> = (props) => {
+const Divider: React.FC<Props> = (props) => {
   const {
     height = StyleSheet.hairlineWidth,
     color = 'transparent',

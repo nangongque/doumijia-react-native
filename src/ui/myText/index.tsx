@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, Platform } from '@ui'
-import { TextStyle } from 'react-native'
+import { TextStyle, ViewStyle } from 'react-native'
 import { normalSizeMap } from './style'
 
 const os = Platform.OS
@@ -26,9 +26,14 @@ export const weights: Record<Weight, FontWeight> = {
   bold: '800',
 }
 
-const MyText: React.FC<MyTextProps> = ({
+type Props = MyTextProps & {
+  style?: ViewStyle
+}
+
+const MyText: React.FC<Props> = ({
   color = 'black',
   size = 12,
+  textAlign = 'center',
   weight = 'normal',
   height,
   style,
@@ -37,6 +42,7 @@ const MyText: React.FC<MyTextProps> = ({
 }) => {
   const textStyle: TextStyle = {
     fontSize: size,
+    textAlign: textAlign,
     fontWeight: weights[weight],
     lineHeight: normalSizeMap[size],
     color: textColors[color as FontColor] ?? color,

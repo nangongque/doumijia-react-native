@@ -1,12 +1,16 @@
 import React from 'react'
-import { Column } from '@ui'
+import { Column, ScrollView } from '@ui'
 import { MineHeader } from './components/MineHeader'
+import { MineCenter } from './components/MineCenter'
+import { MineBottom } from './components/MineBottom'
 // 我的
 const MineScreen = ({ navigation }) => {
   return (
-    <Column>
+    <ScrollView style={{ flex: 1 }}>
       <MineHeader />
-    </Column>
+      <MineCenter />
+      <MineBottom />
+    </ScrollView>
   )
 }
 

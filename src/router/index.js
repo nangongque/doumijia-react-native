@@ -8,7 +8,10 @@ const Drawer = createDrawerNavigator() //  抽屉drawer实例
 
 function CustomDrawerContent({ navigation }) {
   return (
-    <ImageBackground source={require('@images/bbg.png')} style={{ flex: 1 }} />
+    <ImageBackground
+      source={require('@source/images/bbg.png')}
+      style={{ flex: 1 }}
+    />
   )
 }
 

@@ -7,7 +7,7 @@ interface LinearProps {
   end?: { x: any; y: any }
   colors?: any
   style?: ViewStyle
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const Linear: React.FC<LinearProps> = ({
