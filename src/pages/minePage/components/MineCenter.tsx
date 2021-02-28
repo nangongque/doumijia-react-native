@@ -15,11 +15,11 @@ const MineCenter: React.FC<MineCenterProps> = React.memo(({}) => {
     },
     {
       title: '收藏',
-      icon: <SvgIcon fill={['#607D8B']} path={iconPath.message} size={28} />,
+      icon: <SvgIcon fill={['#607D8B']} path={iconPath.favorites} size={28} />,
     },
     {
       title: '浏览记录',
-      icon: <SvgIcon fill={['#607D8B']} path={iconPath.message} size={28} />,
+      icon: <SvgIcon fill={['#607D8B']} path={iconPath.recording} size={28} />,
     },
   ]
   return (
