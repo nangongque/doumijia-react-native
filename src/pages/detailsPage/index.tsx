@@ -1,9 +1,8 @@
 import React from 'react'
 import { View, Text, Button } from 'react-native'
-import { setStatusBar } from '@util'
+
 // 详情页
 const DetailScreen = ({ navigation }) => {
-  // setStatusBar(false, 'dark-content', 'green')
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>DetailScreen</Text>

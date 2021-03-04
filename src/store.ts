@@ -1,10 +1,29 @@
 import thunk from 'redux-thunk'
-import { createReducer } from 'redux-orm'
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
-const rootReducer = combineReducers({})
+import UserReducer from './reducers/user_reducer'
 
-const middleware = [thunk]
+const rootReducer = combineReducers({
+  UserReducer,
+})
+const middleware = []
+middleware.push(thunk)
+
+const logger = (store) => (next) => (action) => {
+  if (typeof action === 'function') {
+    console.log('dispatch a function')
+  } else {
+    console.log('dispatch', action)
+  }
+  const result = next(action)
+  console.log('nextState', store.getState())
+  return result
+}
+
+if (__DEV__) {
+  middleware.push(logger)
+}
+
 const store = configureStore({
   reducer: rootReducer,
   middleware,
