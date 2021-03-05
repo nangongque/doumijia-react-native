@@ -37,11 +37,11 @@ const bottomButtons = [
     type: 'normal',
     icon: <SvgIcon fill={['#333']} path={iconPath.share} size={22} />,
   },
-  {
-    title: '关于工作室',
-    type: 'normal',
-    icon: <SvgIcon fill={['#333']} path={iconPath.studio} size={22} />,
-  },
+  // {
+  //   title: '关于工作室',
+  //   type: 'normal',
+  //   icon: <SvgIcon fill={['#333']} path={iconPath.studio} size={22} />,
+  // },
 ]
 const MineBottom: React.FC<MineBottomProps> = React.memo(({}) => {
   return (

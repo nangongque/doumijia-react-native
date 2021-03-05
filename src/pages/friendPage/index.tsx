@@ -1,10 +1,13 @@
 import React from 'react'
-import { isiOS } from '@util'
 import { View, Text, Button } from '@ui'
-import { setStatusBar } from '@util'
+import { SetStatusBar } from '@util'
+const barProps: BarProps = {
+  translucent: true,
+  barStyle: 'light-content',
+}
 // 好友
 const FriendScreen = ({ navigation }) => {
-  if (!isiOS) setStatusBar('light-content')
+  SetStatusBar(barProps)
   return (
     <View
       style={{

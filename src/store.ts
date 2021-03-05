@@ -24,6 +24,7 @@ if (__DEV__) {
   middleware.push(logger)
 }
 
+export type RootState = ReturnType<typeof rootReducer>
 const store = configureStore({
   reducer: rootReducer,
   middleware,

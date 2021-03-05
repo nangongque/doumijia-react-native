@@ -1,11 +1,11 @@
 //
-export { setStatusBar } from './statusBar'
+export { SetStatusBar } from './statusBar'
 
 //
 export {
   isiOS,
   isiPhoneX,
-  getStatusBarHeight,
+  // getStatusBarHeight,
   statusBarHeight,
   titleHeight,
 } from './fullscreen'

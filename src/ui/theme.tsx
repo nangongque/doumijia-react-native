@@ -3,7 +3,8 @@
  */
 
 export const ThemeColors = {
-  Default: '#607D8B',
+  Default: '#48C2C8',
+  // Default: '#607D8B',
   LightPink: '#FFB6C1', //浅粉红
   Pink: '#FFC0CB', //粉红
   Crimson: '#DC143C', //猩红

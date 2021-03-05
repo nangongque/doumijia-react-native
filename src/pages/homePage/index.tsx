@@ -1,10 +1,14 @@
 import React from 'react'
-import { isiOS } from '@util'
 import { View, Text, Button } from '@ui'
-import { setStatusBar, statusBarHeight } from '@util'
+import { SetStatusBar, statusBarHeight } from '@util'
+
+const barProps: BarProps = {
+  translucent: true,
+  barStyle: 'dark-content',
+}
 // 首页
 const HomeScreen = ({ navigation }) => {
-  if (!isiOS) setStatusBar('dark-content')
+  SetStatusBar(barProps)
   return (
     <View style={{ paddingTop: statusBarHeight }}>
       <Text>HomeScreen</Text>

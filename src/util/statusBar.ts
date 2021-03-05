@@ -1,5 +1,6 @@
 import { StatusBar } from '@ui'
 import { useFocusEffect } from '@react-navigation/native'
+import { isiOS } from '@util'
 
 /**
  * 设置状态栏样式
@@ -7,16 +8,20 @@ import { useFocusEffect } from '@react-navigation/native'
  * @param barStyle 设置状态栏文本的颜色
  * @param backgroundColor 状态栏的背景色
  */
-function setStatusBar(
-  barStyle: string,
-  translucent = true,
-  backgroundColor = '#ffffff00',
-) {
+function SetStatusBar(barProps: BarProps) {
+  const {
+    translucent = true,
+    barStyle = 'dark-content',
+    backgroundColor = '#ffffff00',
+  } = barProps
+
   useFocusEffect(() => {
-    StatusBar.setTranslucent(translucent)
-    StatusBar.setBarStyle(barStyle)
-    StatusBar.setBackgroundColor(backgroundColor)
+    StatusBar.setBarStyle(barStyle, true)
+    if (!isiOS()) {
+      StatusBar.setTranslucent(translucent)
+      StatusBar.setBackgroundColor(backgroundColor)
+    }
   })
 }
 
-export { setStatusBar }
+export { SetStatusBar }

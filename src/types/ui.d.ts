@@ -65,3 +65,10 @@ declare interface DividerProps {
 declare interface BadgeProps {
   number: number
 }
+
+declare type StatusBarStyle = 'default' | 'light-content' | 'dark-content'
+declare interface BarProps {
+  translucent?: boolean
+  barStyle: StatusBarStyle
+  backgroundColor?: string
+}
