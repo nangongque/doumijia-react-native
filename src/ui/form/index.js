@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from 'react'
-import { useFormContext } from 'react-hook-form'
-import { Row, TextInput, StyleSheet, Button, GHWithoutFeedback } from '@ui'
+
+import { useForm, useFormContext } from 'react-hook-form'
+import { Row, TextInput, StyleSheet, GHWithoutFeedback } from '@ui'
 import TokenButton from './TokenButton'
 import { ThemeColors } from 'ui/theme'
 import MyText from 'ui/myText'
@@ -21,7 +22,7 @@ const BasicInput = ({
 
   useEffect(() => {
     setValue(name, defaultValue, true)
-  }, [defaultValue])
+  }, [name, defaultValue, setValue])
 
   return (
     <Row>
@@ -67,10 +68,12 @@ const PhoneInput = ({ ...props }) => {
 }
 
 const TokenInput = ({ sendToken }) => {
-  const { getValues, errors } = useFormContext()
-
+  const { errors } = useForm()
+  const { getValues } = useFormContext()
+  console.log({ errors })
   const onPress = (setStart) => {
     const data = getValues()
+    // console.log({ data })
     if (errors.phone) {
       console.log(errors.phone?.message || '请输入手机号')
     } else {

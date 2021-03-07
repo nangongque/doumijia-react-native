@@ -9,7 +9,7 @@ const MineScreen = ({ navigation }) => {
     <ScrollView style={{ flex: 1 }}>
       <MineHeader />
       <MineCenter />
-      <MineBottom />
+      {/* <MineBottom /> */}
     </ScrollView>
   )
 }

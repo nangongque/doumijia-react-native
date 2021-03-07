@@ -13,11 +13,11 @@ import { deviceWidth, SetStatusBar, statusBarHeight } from '@util'
 import PhoneVerification from '@features/auth/components/PhoneVerification'
 
 const barProps: BarProps = {
-  translucent: true,
+  translucent: false,
   barStyle: 'dark-content',
 }
 // 首页
-const LoginPage = ({ navigation }) => {
+const SignPage = ({ navigation }) => {
   SetStatusBar(barProps)
   const [smsMethod, toggleMethod] = useState(true)
   const { methodText, toggleText } = useMemo(() => {
@@ -50,4 +50,4 @@ const LoginPage = ({ navigation }) => {
   )
 }
 
-export { LoginPage }
+export { SignPage }

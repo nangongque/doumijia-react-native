@@ -5,12 +5,10 @@ import { useDispatch } from '@hooks'
 
 const PhoneVerification = () => {
   const dispatch = useDispatch()
-  const sendToken = useCallback(
-    (phone) => {
-      dispatch(console.log({ phone }))
-    },
-    [dispatch],
-  )
+  const sendToken = useCallback((phone) => {
+    // console.log({ phone })
+    // dispatch(console.log({ phone }))
+  }, [])
   const onSubmit = (data: SignInSmsParam) => {
     console.log({ data })
   }
