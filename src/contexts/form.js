@@ -1,13 +1,9 @@
 import React from 'react'
-import {
-  useForm,
-  FormProvider as Provider,
-  useFormContext,
-} from 'react-hook-form'
+import useForm, { FormContext } from 'react-hook-form'
 
 const FormProvider = ({ children }) => {
   const methods = useForm()
-  return <Provider {...methods}>{children}</Provider>
+  return <FormContext {...methods}>{children}</FormContext>
 }
 
 export { FormProvider }

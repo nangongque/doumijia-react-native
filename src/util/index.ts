@@ -18,3 +18,6 @@ export { deviceWidth, deviceHeight, px2Dp, getFontSize } from './scale'
 
 //
 export { hexToRgb } from './colorConversion'
+
+//
+export { toastShort, toastLong } from './toast'

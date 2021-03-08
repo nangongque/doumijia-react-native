@@ -1,12 +1,16 @@
 import React, { useEffect, useMemo } from 'react'
 
-import { useForm, useFormContext } from 'react-hook-form'
+import useForm, { FormContext, useFormContext } from 'react-hook-form'
 import { Row, TextInput, StyleSheet, GHWithoutFeedback } from '@ui'
 import TokenButton from './TokenButton'
 import { ThemeColors } from 'ui/theme'
 import MyText from 'ui/myText'
-import { deviceWidth } from '@util'
+import { deviceWidth, toastShort } from '@util'
 
+const Provider = ({ children }) => {
+  const methods = useForm()
+  return <FormContext {...methods}>{children}</FormContext>
+}
 const BasicInput = ({
   name,
   validation,
@@ -22,7 +26,7 @@ const BasicInput = ({
 
   useEffect(() => {
     setValue(name, defaultValue, true)
-  }, [name, defaultValue, setValue])
+  }, [setValue, name, defaultValue])
 
   return (
     <Row>
@@ -67,15 +71,13 @@ const PhoneInput = ({ ...props }) => {
   )
 }
 
-const TokenInput = ({ sendToken }) => {
-  const { errors } = useForm()
-  const { getValues } = useFormContext()
-  console.log({ errors })
+const TokenInput = ({ sendToken, ...restProps }) => {
+  const { getValues, errors } = useFormContext()
+
   const onPress = (setStart) => {
     const data = getValues()
-    // console.log({ data })
     if (errors.phone) {
-      console.log(errors.phone?.message || '请输入手机号')
+      toastShort(errors.phone?.message || '请输入手机号')
     } else {
       setStart(true)
       sendToken(data.phone)
@@ -87,6 +89,7 @@ const TokenInput = ({ sendToken }) => {
       placeholder="输入验证码"
       keyboardType="number-pad"
       renderRight={() => <TokenButton onPress={onPress} />}
+      {...restProps}
     />
   )
 }
@@ -134,6 +137,7 @@ const SubmitButton = ({ onSubmit, ...restProps }) => {
   )
 }
 export default {
+  Provider,
   PhoneInput,
   TokenInput,
   SubmitButton,
