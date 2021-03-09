@@ -8,7 +8,6 @@ export const setUserInfo = (data) => ({
 
 export const fetchToken = (params, cb) => (dispatch) => {
   const phone = params.phone
-  console.log({ phone })
   sendSms(phone).then((res) => {
     console.log(res)
   })

@@ -32,9 +32,11 @@ const TokenButton = (props) => {
     <GHWithoutFeedback onPress={onPress}>
       <Row>
         {isCounting ? (
-          <MyText>重新发送（{count}s）</MyText>
+          <MyText size={14}>重新发送（{count}s）</MyText>
         ) : (
-          <MyText color={ThemeColors.Default}>获取验证码</MyText>
+          <MyText size={14} color={ThemeColors.Default}>
+            获取验证码
+          </MyText>
         )}
       </Row>
     </GHWithoutFeedback>

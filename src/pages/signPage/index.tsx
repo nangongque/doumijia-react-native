@@ -1,16 +1,9 @@
 import React, { useState, useMemo } from 'react'
-import {
-  View,
-  Text,
-  Button,
-  Column,
-  MyText,
-  GHWithoutFeedback,
-  Divider,
-  StyleSheet,
-} from '@ui'
-import { deviceWidth, SetStatusBar, statusBarHeight } from '@util'
+import { Column, MyText, GHWithoutFeedback } from '@ui'
+import { SetStatusBar } from '@util'
 import PhoneVerification from '@features/auth/components/PhoneVerification'
+import PasswordVerification from '@features/auth/components/PasswordVerification'
+import { CustomStackHeader } from 'ui/header/customStackHeader'
 
 const barProps: BarProps = {
   translucent: false,
@@ -34,18 +27,25 @@ const SignPage = ({ navigation }) => {
     toggleMethod((c) => !c)
   }
   return (
-    <Column style={{ flex: 1, paddingTop: 50, paddingHorizontal: 60 }}>
-      <GHWithoutFeedback onPress={switchMethod}>
-        <MyText size={16}>{toggleText}</MyText>
-      </GHWithoutFeedback>
+    <Column style={{ flex: 1 }} align="center">
+      <CustomStackHeader
+        renderRight={() => (
+          <GHWithoutFeedback onPress={switchMethod}>
+            <MyText size={16} style={{ marginRight: 20 }} color="grey">
+              {toggleText}
+            </MyText>
+          </GHWithoutFeedback>
+        )}
+      />
+
       <MyText
         size={24}
         weight="semibold"
-        style={{ marginTop: 30, marginBottom: 60 }}
+        style={{ marginTop: 45, marginBottom: 60 }}
       >
         {methodText}
       </MyText>
-      <PhoneVerification />
+      {smsMethod ? <PhoneVerification /> : <PasswordVerification />}
     </Column>
   )
 }

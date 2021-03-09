@@ -1,10 +1,9 @@
 import React, { useEffect, useMemo } from 'react'
 
 import useForm, { FormContext, useFormContext } from 'react-hook-form'
-import { Row, TextInput, StyleSheet, GHWithoutFeedback } from '@ui'
+import { Row, TextInput, MyText, StyleSheet, GHWithoutFeedback } from '@ui'
 import TokenButton from './TokenButton'
 import { ThemeColors } from 'ui/theme'
-import MyText from 'ui/myText'
 import { deviceWidth, toastShort } from '@util'
 
 const Provider = ({ children }) => {
@@ -71,7 +70,7 @@ const PhoneInput = ({ ...props }) => {
   )
 }
 
-const TokenInput = ({ sendToken, ...restProps }) => {
+const TokenInput = ({ sendToken }) => {
   const { getValues, errors } = useFormContext()
 
   const onPress = (setStart) => {
@@ -89,7 +88,25 @@ const TokenInput = ({ sendToken, ...restProps }) => {
       placeholder="输入验证码"
       keyboardType="number-pad"
       renderRight={() => <TokenButton onPress={onPress} />}
-      {...restProps}
+    />
+  )
+}
+
+const passwordValidation = {
+  required: {
+    value: true,
+    message: '密码不能我空',
+  },
+}
+
+const PasswordInput = () => {
+  // const [isSecure, setSecure] = useState(true)
+  return (
+    <BasicInput
+      name="password"
+      placeholder="输入密码"
+      secureTextEntry={true}
+      validation={passwordValidation}
     />
   )
 }
@@ -140,6 +157,7 @@ export default {
   Provider,
   PhoneInput,
   TokenInput,
+  PasswordInput,
   SubmitButton,
 }
 
@@ -153,7 +171,7 @@ const styles = StyleSheet.create({
   textinput: {
     flex: 1,
     padding: 0,
-    fontSize: 16,
+    fontSize: 20,
     lineHeight: 20,
     height: 40,
     color: '#222',
