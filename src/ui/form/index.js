@@ -5,6 +5,7 @@ import { Row, TextInput, MyText, StyleSheet, GHWithoutFeedback } from '@ui'
 import TokenButton from './TokenButton'
 import { ThemeColors } from 'ui/theme'
 import { deviceWidth, toastShort } from '@util'
+import Button from 'ui/button'
 
 const Provider = ({ children }) => {
   const methods = useForm()
@@ -128,29 +129,15 @@ const SubmitButton = ({ onSubmit, ...restProps }) => {
     )
   }, [errors, allField])
   return (
-    <GHWithoutFeedback
-      style={{
-        width: deviceWidth - 120,
-        height: 40,
-        backgroundColor: ThemeColors.Default,
-        justifyContent: 'center',
-        borderRadius: 20,
-      }}
-      disabled={disabled}
+    <Button
+      style={{ borderRadius: 30 }}
+      linear
+      textStyle={{ fontSize: 15 }}
       onPress={onPress}
-    >
-      <MyText color="white">同意协议并登录</MyText>
-    </GHWithoutFeedback>
-    // <Button
-    //   // color={ThemeColors.Default}
-    //   title="同意协议并登录"
-    //   // style={{ borderRadius: 30 }}
-    //   // linear
-    //   // textStyle={{ fontSize: 15 }}
-    //   // onPress={onPress}
-    //   // disabled={disabled}
-    //   // {...restProps}
-    // />
+      disabled={disabled}
+      color={ThemeColors.Default}
+      {...restProps}
+    />
   )
 }
 export default {

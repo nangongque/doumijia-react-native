@@ -1,17 +1,48 @@
 import { baseRequest } from '@service/clients'
+import * as RU from '@util/ramdaUtil'
+import { ResponseError } from 'umi-request'
+/**
+ * 发送短信验证码
+ */
+const sendSms = async (phone: string) => {
+  return await baseRequest.post('/user/code', {
+    data: {
+      phone,
+    },
+    errorHandler: (e) => e,
+  })
+}
 
 /**
  *
  */
-const sendSms = async (phone) => {
-  const res = await baseRequest.post('/user/code', {
+const postSignInWithSms = async ({ phone, token }: SignInSmsParam) => {
+  const res = await baseRequest.post(`/login/${phone}`, {
     data: {
-      phone,
+      code: token,
     },
-    errorHandler: (e) => console.log({ e }),
+    errorHandler: (e) => ({
+      data: RU.camelizeKeys(e.data),
+      status: e.response.status,
+    }),
   })
-  // console.log({ res })
-  return
+  return res as AuthUser | ResponseError
 }
 
-export { sendSms }
+/**
+ *
+ */
+const queryUserById = async (id: Id) => {
+  const res = await baseRequest.post('/user/queryUserById', {
+    data: {
+      id,
+    },
+    errorHandler: (e) => ({
+      data: RU.camelizeKeys(e.data),
+      status: e.response.status,
+    }),
+  })
+  return res as AuthUser | ResponseError
+}
+
+export { sendSms, postSignInWithSms, queryUserById }

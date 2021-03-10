@@ -1,19 +1,18 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useRef } from 'react'
 import { Form, Divider, MyText, Column } from '@ui'
-import { useDispatch } from '@hooks'
-import { fetchToken } from '@actions/user_action'
+import { fetchToken, signInWithSms } from '@actions/user_action'
 import { FormProvider } from '@contexts/form'
+import SubmitLoading from '@components/SubmitLoading'
 
 const PhoneVerification = () => {
-  const dispatch = useDispatch()
-  const sendToken = useCallback(
-    (phone) => {
-      dispatch(fetchToken({ phone }))
-    },
-    [dispatch],
-  )
+  const ref = useRef<any>()
+  const sendToken = useCallback((phone) => {
+    ref.current.show('正在获取验证码')
+    fetchToken({ phone }, ref.current.hide())
+  }, [])
   const onSubmit = (data: SignInSmsParam) => {
-    console.log({ data })
+    ref.current.show('正在登录...')
+    signInWithSms(data, ref.current.hide())
   }
 
   return (
@@ -28,6 +27,7 @@ const PhoneVerification = () => {
           登录注册代表同意《用户协议》《隐私政策》
         </MyText>
         <Form.SubmitButton onSubmit={onSubmit} title="同意协议并登录" />
+        <SubmitLoading ref={ref} />
       </Column>
     </FormProvider>
   )

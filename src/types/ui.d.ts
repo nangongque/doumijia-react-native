@@ -72,3 +72,7 @@ declare interface BarProps {
   barStyle: StatusBarStyle
   backgroundColor?: string
 }
+
+declare interface LoadingProps {
+  text?: string
+}

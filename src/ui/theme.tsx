@@ -144,3 +144,57 @@ export const ThemeColors = {
   BlueGray: '#607D8B', //蓝灰
   Black: '#000000', //		纯黑
 }
+
+export const ThemeStyle = {
+  //header
+  navigatorColor: '#222',
+  headerHeight: 44,
+  headerItemWidth: 40,
+
+  //text
+  textBlack: '#222',
+  textGrey: '#85858C',
+  textLightGrey: '#C2C2C5',
+  textOrange: '#FF6D3F',
+  textWhite: '#FFF',
+  textBlue: '#005BB8',
+  textBrownOrange: '#C44D14',
+
+  //border radius
+  radiusXs: 2,
+  radiusSm: 5,
+  radiusMd: 8,
+  radiusLg: 10,
+  radiusXl: 13,
+
+  //horizontal space
+  hSpacingSm: 5,
+  hSpacingMd: 10,
+  hSpacingLg: 15,
+
+  //vertical space
+  vSpacingXs: 3,
+  vSpacingSm: 6,
+  vSpacingMd: 10,
+  vSpacingLg: 15,
+  vSpacingXl: 20,
+
+  //button
+  buttonHeight: 44,
+  buttonFontSize: 16,
+  buttonHeightSm: 23,
+  buttonFontSizeSm: 12,
+  buttonDisabledBackground: '#DEDEE3',
+  buttonDisabledText: '#85858C',
+  buttonOrange: '#FF6D3F',
+  buttonGrey: '#85858C',
+  buttonLightGrey: '#F7F7FB',
+
+  // form
+  inputPlaceholderColor: '#C2C2C5',
+  inputColor: '#222',
+  inputHeight: 40,
+
+  // linear gradient
+  gradient_orange: ['#FF9017', '#FF6D3F'],
+}

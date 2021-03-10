@@ -10,7 +10,7 @@ function userInfo(state = defaultUserInfo, action) {
     case USER.SET_USER_INFO:
       return action.data
     case USER.UPDATE_USER_INFO:
-      return Object({}, state, action.data)
+      return Object.assign({}, state, action.data)
     case USER.CLEAR_USER_INFO:
       return { ...defaultUserInfo }
     default:

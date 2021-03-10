@@ -3,7 +3,6 @@ export {
   Text,
   Image,
   Switch,
-  Button,
   Platform,
   FlatList,
   StatusBar,
@@ -37,3 +36,5 @@ export { default as Avatar } from './avatar'
 export { default as Badge } from './badge'
 export { default as NavItem } from './navItem'
 export { default as Form } from './form'
+export { default as Loading } from './loading'
+export { default as Button} from './button'
