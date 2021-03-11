@@ -6,6 +6,7 @@ import { FriendScreen } from '../pages/friendPage'
 import { CommunityScreen } from '../pages/communityPage'
 import { MarketScreen } from '../pages/marketPage'
 import { MineScreen } from '../pages/minePage'
+import { ThemeColors } from 'ui/theme'
 
 // 选项卡页签tab navigator 实例
 const Tab = createBottomTabNavigator()
@@ -38,7 +39,7 @@ function TabScreen() {
         },
       })}
       tabBarOptions={{
-        activeTintColor: '#607D8B',
+        activeTintColor: ThemeColors.Default,
         inactiveTintColor: 'gray',
       }}
     >

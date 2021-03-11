@@ -6,11 +6,11 @@ import { MineBottom } from './components/MineBottom'
 // 我的
 const MineScreen = ({ navigation }) => {
   return (
-    <ScrollView style={{ flex: 1 }}>
+    <Column style={{ flex: 1 }}>
       <MineHeader />
-      <MineCenter />
+      {/* <MineCenter /> */}
       {/* <MineBottom /> */}
-    </ScrollView>
+    </Column>
   )
 }
 

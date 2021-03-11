@@ -40,7 +40,7 @@ export default function App() {
   const userInfo = useSelector((state) => state.UserReducer.userInfo)
   return (
     <>
-      <StatusBar
+      {/* <StatusBar
         hidden={
           currentRoute === null ||
           (Platform.OS === 'ios' && currentRoute === 'VideoDetail')
@@ -48,7 +48,7 @@ export default function App() {
         StatusBarAnimation="fade"
         backgroundColor="#ce3d3a"
         barStyle="light-content"
-      />
+      /> */}
       <NavigationContainer
         ref={routeNameRef}
         initialState={initialState}

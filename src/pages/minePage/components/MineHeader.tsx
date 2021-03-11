@@ -1,85 +1,70 @@
 import React from 'react'
-import { Avatar, Column, GHOpacity, Linear, MyText, Row } from '@ui'
+import {
+  ImageBackground,
+  Avatar,
+  Column,
+  GHOpacity,
+  Linear,
+  MyText,
+  Row,
+  Divider,
+} from '@ui'
 import { mineStyles } from '../mineCss'
-import { hexToRgb, px2Dp } from '@util'
-
-const ACTIONS = ['关 注', '粉 丝', '积 分', '编辑资料']
+import { deviceWidth, hexToRgb, px2Dp } from '@util'
+import { ThemeColors } from 'ui/theme'
+import { useSelector } from '@hooks'
+const ACTIONS = ['关 注', '粉 丝', '积 分']
 
 interface MineHeaderProps {}
 const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
+  const userInfo = useSelector((state) => state.UserReducer.userInfo)
+  console.log({ userInfo })
+  const { username, doumiNo, signature } = userInfo
   return (
-    <Linear
-      style={mineStyles.surfaceGradient}
-      colors={['#f4f2f2', hexToRgb('#607D8B', 0.54)]}
+    <ImageBackground
+      source={require('@source/images/ic_default_background.png')}
+      style={{
+        width: deviceWidth,
+        height: (deviceWidth * 886) / 1125,
+        alignItems: 'flex-start',
+        paddingHorizontal: px2Dp(40),
+        paddingTop: px2Dp(120),
+      }}
     >
-      <Column style={mineStyles.wordArt}>
-        <Linear
-          style={mineStyles.lineOneGradient}
-          colors={[hexToRgb('#FFFFFFFF', 1), hexToRgb('#607D8B', 0.18)]}
-        />
-        <Linear
-          style={mineStyles.lineTwoGradient}
-          colors={[hexToRgb('#FFFFFFFF', 0.4), hexToRgb('#607D8B', 0.42)]}
-        />
-        <Linear
-          style={mineStyles.lineThreeGradient}
-          colors={[hexToRgb('#607D8B', 1), hexToRgb('#607D8B', 0.05)]}
-        />
-        <Linear
-          style={mineStyles.lineFourGradient}
-          colors={[hexToRgb('#607D8B', 0.45), hexToRgb('#607D8B', 0.46)]}
-        />
-      </Column>
-      <Row style={{ paddingHorizontal: 30 }}>
-        <Avatar size={px2Dp(100)} style={{ marginRight: 20 }} />
-        <MyText color="white" size={16} weight="medium">
-          登录 / 注册
-        </MyText>
+      <Row>
+        <Avatar size={px2Dp(160)} />
+        <Column style={{ marginLeft: px2Dp(20) }}>
+          <Row>
+            <MyText color={ThemeColors.White} size={20} weight="semibold">
+              {username}
+            </MyText>
+          </Row>
+          <MyText size={11} color={ThemeColors.WhiteSmoke}>
+            豆米号：{doumiNo}
+          </MyText>
+          <Divider height={20} />
+        </Column>
       </Row>
-      <Row justify="space-around">
-        {ACTIONS.map((item, index) => {
-          let Element = null
-          switch (index) {
-            case 0:
-              Element = (
-                <MyText size={16} color="white">
-                  0
-                </MyText>
-              )
-              break
-            case 1:
-              Element = (
-                <MyText size={16} color="white">
-                  0
-                </MyText>
-              )
-              break
-            case 2:
-              Element = (
-                <MyText size={16} color="white">
-                  0
-                </MyText>
-              )
-              break
-            case 3:
-              Element = (
-                <MyText size={16} color="white">
-                  0
-                </MyText>
-              )
-              break
-          }
-          return (
-            <GHOpacity>
-              {Element}
-              <MyText color="white" style={{ marginTop: 6 }} weight="medium">
-                {item}
-              </MyText>
-            </GHOpacity>
-          )
-        })}
+      <MyText
+        size={14}
+        color={ThemeColors.White}
+        style={{ marginVertical: 30 }}
+      >
+        {signature}
+      </MyText>
+      <Row style={{ width: px2Dp(240) }} justify="space-between">
+        {ACTIONS.map((item, index) => (
+          <Column key={index}>
+            <MyText size={15} color={ThemeColors.White} weight="semibold">
+              5
+            </MyText>
+            <MyText size={11} color={ThemeColors.WhiteSmoke}>
+              {item}
+            </MyText>
+          </Column>
+        ))}
       </Row>
-    </Linear>
+    </ImageBackground>
   )
 })
 
