@@ -4,6 +4,7 @@ import * as iconPath from '../../../source/svg'
 import { deviceWidth, px2Dp } from '@util'
 import { useNavigation } from '@hooks'
 import { ThemeColors } from 'ui/theme'
+import AgreementPolicy from '@features/auth/components/AgreementPolicy'
 const buttonWidth = px2Dp(560)
 const buttonHeight = px2Dp(80)
 
@@ -74,9 +75,10 @@ const GuideOptions: React.FC<GuideOptionsProps> = React.memo(({}) => {
           </Column>
         ))}
       </Row>
-      <MyText size={11} color={ThemeColors.White}>
+      {/* <MyText size={11} color={ThemeColors.White}>
         登录注册代表同意《用户协议》《隐私政策》
-      </MyText>
+      </MyText> */}
+      <AgreementPolicy textSize={11} textColor={ThemeColors.White} />
     </Column>
   )
 })

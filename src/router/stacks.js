@@ -4,6 +4,7 @@ import { TabScreen } from './tabs'
 import { DetailScreen } from '../pages/detailsPage'
 import { GuidePage } from '@pages/guidePage'
 import { SignPage } from '@pages/signPage'
+import AppWebView from '@features/browser'
 // 堆栈stack 实例
 const RootStack = createStackNavigator()
 
@@ -19,6 +20,11 @@ const SignInRouteScreen = () => {
         name={'SignIn'}
         options={{ headerShown: false }}
         component={SignPage}
+      />
+      <RootStack.Screen
+        name={'AppWebView'}
+        options={{ headerShown: false }}
+        component={AppWebView}
       />
     </RootStack.Navigator>
   )
