@@ -5,6 +5,7 @@ export {
   Switch,
   Platform,
   FlatList,
+  UIManager,
   StatusBar,
   TextInput,
   PixelRatio,

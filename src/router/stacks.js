@@ -10,7 +10,7 @@ const RootStack = createStackNavigator()
 
 const SignInRouteScreen = () => {
   return (
-    <RootStack.Navigator initialRouteName={'Guide'}>
+    <RootStack.Navigator mode="modal" initialRouteName={'Guide'}>
       <RootStack.Screen
         name="Guide"
         options={{ headerShown: false }}
@@ -31,7 +31,7 @@ const SignInRouteScreen = () => {
 }
 const RootRouteScreen = () => {
   return (
-    <RootStack.Navigator initialRouteName={'Guide'}>
+    <RootStack.Navigator mode="modal" initialRouteName={'Guide'}>
       <RootStack.Screen
         name="TabNav"
         options={{
