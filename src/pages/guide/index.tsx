@@ -10,7 +10,7 @@ const barProps: BarProps = {
 }
 
 // 引导页
-const GuidePage = ({ navigation }) => {
+const Guide = ({ navigation }) => {
   SetStatusBar(barProps)
   const [animStop, setAnimStop] = useState(false)
   const scrollY = useRef(new Animated.Value(0)).current
@@ -83,4 +83,4 @@ const GuidePage = ({ navigation }) => {
   )
 }
 
-export { GuidePage }
+export { Guide }

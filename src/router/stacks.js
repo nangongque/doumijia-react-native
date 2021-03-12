@@ -1,10 +1,12 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { TabScreen } from './tabs'
-import { DetailScreen } from '../pages/detailsPage'
-import { GuidePage } from '@pages/guidePage'
-import { SignPage } from '@pages/signPage'
+import { Detail } from '../pages/details'
+import { Guide } from '@pages/guide'
+import { Sign } from '@pages/sign'
 import AppWebView from '@features/browser'
+import { Setting } from '@pages/setting'
+import { EditInfo } from '@pages/editInfo'
 // 堆栈stack 实例
 const RootStack = createStackNavigator()
 
@@ -14,12 +16,12 @@ const SignInRouteScreen = () => {
       <RootStack.Screen
         name="Guide"
         options={{ headerShown: false }}
-        component={GuidePage}
+        component={Guide}
       />
       <RootStack.Screen
         name={'SignIn'}
         options={{ headerShown: false }}
-        component={SignPage}
+        component={Sign}
       />
       <RootStack.Screen
         name={'AppWebView'}
@@ -50,7 +52,21 @@ const RootRouteScreen = () => {
           //   }),
           // },
         }}
-        component={DetailScreen}
+        component={Detail}
+      />
+      <RootStack.Screen
+        name="Setting"
+        options={{
+          title: '设置',
+        }}
+        component={Setting}
+      />
+      <RootStack.Screen
+        name="EditInfo"
+        options={{
+          title: '编辑资料',
+        }}
+        component={EditInfo}
       />
     </RootStack.Navigator>
   )

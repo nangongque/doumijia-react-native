@@ -1,11 +1,10 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { HomeScreen } from '../pages/homePage'
-import { FriendScreen } from '../pages/friendPage'
-import { CommunityScreen } from '../pages/communityPage'
-import { MarketScreen } from '../pages/marketPage'
-import { MineScreen } from '../pages/minePage'
+import { Home } from '../pages/home'
+import { Community } from '../pages/community'
+import { Market } from '../pages/market'
+import { Mine } from '../pages/mine'
 import { ThemeColors } from 'ui/theme'
 
 // 选项卡页签tab navigator 实例
@@ -45,27 +44,22 @@ function TabScreen() {
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
-        options={{ tabBarLabel: '发现' }}
-      />
-      <Tab.Screen
-        name="Friend"
-        component={FriendScreen}
-        options={{ tabBarLabel: '好友' }}
+        component={Home}
+        options={{ tabBarLabel: '首页' }}
       />
       <Tab.Screen
         name="Community"
-        component={CommunityScreen}
+        component={Community}
         options={{ tabBarLabel: '社区' }}
       />
       <Tab.Screen
         name="Market"
-        component={MarketScreen}
+        component={Market}
         options={{ tabBarLabel: '商城' }}
       />
       <Tab.Screen
         name="Mine"
-        component={MineScreen}
+        component={Mine}
         options={{ tabBarLabel: '我的' }}
       />
     </Tab.Navigator>

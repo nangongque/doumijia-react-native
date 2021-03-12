@@ -9,8 +9,8 @@ const barProps: BarProps = {
   translucent: false,
   barStyle: 'dark-content',
 }
-// 首页
-const SignPage = ({ navigation }) => {
+// 登录页
+const Sign = ({ navigation }) => {
   SetStatusBar(barProps)
   const [smsMethod, toggleMethod] = useState(true)
   const { methodText, toggleText } = useMemo(() => {
@@ -50,4 +50,4 @@ const SignPage = ({ navigation }) => {
   )
 }
 
-export { SignPage }
+export { Sign }

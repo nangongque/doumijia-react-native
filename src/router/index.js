@@ -1,9 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { ImageBackground, StatusBar, Platform } from '@ui'
+import { ImageBackground, StatusBar, Platform, Column, Avatar } from '@ui'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer, InitialState } from '@react-navigation/native'
 import { RootRouteScreen, SignInRouteScreen } from './stacks'
 import { useSelector } from '@hooks'
+import { ThemeColors } from 'ui/theme'
 
 const Drawer = createDrawerNavigator() //  抽屉drawer实例
 
@@ -19,10 +20,13 @@ const getActiveRouteName = (state) => {
 }
 function CustomDrawerContent({ navigation }) {
   return (
-    <ImageBackground
-      source={require('@source/images/bbg.png')}
-      style={{ flex: 1 }}
-    />
+    <Column style={{ flex: 1, backgroundColor: ThemeColors.White }}>
+      <Avatar />
+    </Column>
+    // <ImageBackground
+    //   source={require('@source/images/bbg.png')}
+    //   style={{ flex: 1 }}
+    // />
   )
 }
 
@@ -72,8 +76,8 @@ export default function App() {
             overlayColor="transparent"
             keyboardDismissMode={'none'}
             edgeWidth={200} //值待修改
-            hideStatusBar={true}
-            drawerType={'back'}
+            // hideStatusBar={true}
+            // drawerType={'back'}
             drawerContent={(props) => <CustomDrawerContent {...props} />}
           >
             <Drawer.Screen name="Root" component={RootRouteScreen} />

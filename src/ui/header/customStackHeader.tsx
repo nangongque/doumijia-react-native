@@ -37,7 +37,7 @@ const CustomStackHeader = ({
         containerStyle,
       ]}
     >
-      <HeaderButtons.Back tintColor={tintColor} onPress={onBackPress} />
+      {/* <HeaderButtons.Back tintColor={tintColor} onPress={onBackPress} /> */}
       {renderLeft && renderLeft()}
       <Row
         justify="center"

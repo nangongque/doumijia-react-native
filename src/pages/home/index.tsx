@@ -8,7 +8,7 @@ const barProps: BarProps = {
   barStyle: 'dark-content',
 }
 // 首页
-const HomeScreen = ({ navigation }) => {
+const Home = ({ navigation }) => {
   SetStatusBar(barProps)
   return (
     <View style={{ paddingTop: statusBarHeight }}>
@@ -30,4 +30,4 @@ const HomeScreen = ({ navigation }) => {
   )
 }
 
-export { HomeScreen }
+export { Home }

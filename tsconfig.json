@@ -24,7 +24,6 @@
       "@contexts/*": ["contexts/*"],
       "@source/*": ["@source/*"],
       "@reducers/*": ["@reducers/*"],
-      // "@images/*": ["@source/images/*"],
       "@native": ["native/index.ts"],
       "@native/*": ["native/*"],
       "@actions/*": ["actions/*"],

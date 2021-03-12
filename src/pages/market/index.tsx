@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, Button } from 'react-native'
 // 市集
-const MarketScreen = ({ navigation }) => {
+const Market = ({ navigation }) => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>MarketScreen</Text>
@@ -13,4 +13,4 @@ const MarketScreen = ({ navigation }) => {
   )
 }
 
-export { MarketScreen }
+export { Market }
