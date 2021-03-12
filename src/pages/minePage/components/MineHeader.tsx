@@ -22,10 +22,10 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
   const { username, doumiNo, signature } = userInfo
   return (
     <ImageBackground
-      source={require('@source/images/ic_default_background.png')}
+      source={require('@source/images/eee.jpg')}
       style={{
         width: deviceWidth,
-        height: (deviceWidth * 886) / 1125,
+        height: (deviceWidth * 813) / 1080,
         alignItems: 'flex-start',
         paddingHorizontal: px2Dp(40),
         paddingTop: px2Dp(120),
