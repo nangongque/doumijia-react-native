@@ -22,7 +22,7 @@ interface MineHeaderProps {}
 const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
   const navigation = useNavigation()
   const userInfo = useSelector((state) => state.UserReducer.userInfo)
-  console.log({ userInfo })
+
   const { username, doumiNo, signature } = userInfo
   return (
     <Column
@@ -134,7 +134,10 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
         {signature}
       </MyText>
       <Row justify="space-between" style={{ width: deviceWidth - px2Dp(80) }}>
-        <Row style={{ width: px2Dp(240) }} justify="space-between">
+        <Row
+          style={{ width: px2Dp(240), marginBottom: 24 }}
+          justify="space-between"
+        >
           {ACTIONS.map((item, index) => (
             <Column key={index}>
               <MyText size={15} color={ThemeColors.White} weight="semibold">

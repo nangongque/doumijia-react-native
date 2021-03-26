@@ -1,46 +1,39 @@
 import React from 'react'
-import { Column, HeadTabView, ScrollView } from '@ui'
+import { Column, HeadTabView } from '@ui'
 import { MineHeader } from './components/MineHeader'
-import { MineCenter } from './components/MineCenter'
-import { MineBottom } from './components/MineBottom'
-import { SetStatusBar } from '@util'
 import { Favorite } from './components/Favorite'
 import { Liked } from './components/Liked'
-const barProps: BarProps = {
-  translucent: false,
-  barStyle: 'light-content',
-}
-const routes = [
-  { key: 'Favorite', title: '收藏' },
-  { key: 'Liked', title: '赞过' },
-]
-// 我的
+
 const Mine = ({ navigation }) => {
-  SetStatusBar(barProps)
+  const [routes] = React.useState([
+    { key: 'Favorite', title: '收藏' },
+    { key: 'Liked', title: '赞过' },
+    { key: 'Liked1', title: '关中' },
+  ])
 
-  const renderHeader = () => {
-    return <MineHeader />
-  }
-  const renderScene = (e) => {
-    const { route } = e
+  const renderHeader = () => <MineHeader />
 
+  const renderScene = ({ route }) => {
     if (route.key === 'Favorite') {
-      return <Favorite index={1} />
+      return <Favorite indexNo={0} />
     } else if (route.key === 'Liked') {
-      return <Liked index={2} />
+      return <Liked index={1} />
+    } else if (route.key === 'Liked1') {
+      return <Favorite indexNo={2} />
     }
     return null
   }
 
   return (
     <Column style={{ flex: 1 }}>
-      {/* <MineHeader /> */}
-      {/* <MineCenter /> */}
-      {/* <MineBottom /> */}
       <HeadTabView
         routes={routes}
         renderScrollHeader={renderHeader}
         renderScene={renderScene}
+        tabbarProps={{
+          alignSelf: true,
+          style: { borderTopLeftRadius: 15, borderTopRightRadius: 15 },
+        }}
       />
     </Column>
   )
