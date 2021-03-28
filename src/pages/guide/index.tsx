@@ -6,7 +6,7 @@ import { GuideOptions } from './components'
 
 const barProps: BarProps = {
   translucent: true,
-  barStyle: 'light-content',
+  barStyle: 'dark-content',
 }
 
 // 引导页

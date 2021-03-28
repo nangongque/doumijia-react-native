@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Home } from '../pages/home'
 import { Community } from '../pages/community'
 import { Market } from '../pages/market'
-import { Mine } from '../pages/mine'
+import { UserHome } from '../pages/userHome'
 import { ThemeColors } from 'ui/theme'
 
 // 选项卡页签tab navigator 实例
@@ -30,7 +30,7 @@ function TabScreen() {
             case 'Market':
               iconName = focused ? 'ios-cart' : 'ios-cart-outline'
               break
-            case 'Mine':
+            case 'UserHome':
               iconName = focused ? 'person' : 'person-outline'
               break
           }
@@ -58,8 +58,8 @@ function TabScreen() {
         options={{ tabBarLabel: '商城' }}
       />
       <Tab.Screen
-        name="Mine"
-        component={Mine}
+        name="UserHome"
+        component={UserHome}
         options={{ tabBarLabel: '我的' }}
       />
     </Tab.Navigator>

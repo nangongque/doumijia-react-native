@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react'
-import { Column, MyText, GHWithoutFeedback } from '@ui'
+import { Column, MyText, GHWithoutFeedback, StatusBar } from '@ui'
 import { SetStatusBar } from '@util'
 import PhoneVerification from '@features/auth/components/PhoneVerification'
 import PasswordVerification from '@features/auth/components/PasswordVerification'
@@ -11,7 +11,7 @@ const barProps: BarProps = {
 }
 // 登录页
 const Sign = ({ navigation }) => {
-  SetStatusBar(barProps)
+  // SetStatusBar(barProps)
   const [smsMethod, toggleMethod] = useState(true)
   const { methodText, toggleText } = useMemo(() => {
     const sms = '验证码登录'
@@ -22,12 +22,27 @@ const Sign = ({ navigation }) => {
     }
   }, [smsMethod])
 
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      console.log('home')
+      // setBarStyle('dark-content')
+      StatusBar.setBarStyle('dark-content', true)
+    })
+
+    return unsubscribe
+  }, [navigation])
   const switchMethod = () => {
     // layoutRef.current.animateNextTransition()
     toggleMethod((c) => !c)
   }
   return (
     <Column style={{ flex: 1 }} align="center">
+      <StatusBar
+        StatusBarAnimation="fade"
+        translucent={true}
+        // backgroundColor="#ce3d3a"
+        // barStyle="dark-content"
+      />
       <CustomStackHeader
         renderRight={() => (
           <GHWithoutFeedback onPress={switchMethod}>

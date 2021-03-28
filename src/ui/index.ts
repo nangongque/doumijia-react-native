@@ -14,6 +14,10 @@ export {
   ScrollView,
   ImageBackground,
   ActivityIndicator,
+  TouchableOpacity,
+  TouchableHighlight,
+  TouchableNativeFeedback,
+  TouchableWithoutFeedback
 } from 'react-native'
 
 export {

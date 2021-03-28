@@ -4,7 +4,7 @@ import { TabBar } from 'react-native-tab-view'
 import { CollapsibleHeaderTabView } from 'react-native-tab-view-collapsible-header'
 import { deviceWidth } from '@util'
 import { ThemeColors } from 'ui/theme'
-
+import Animated from 'react-native-reanimated'
 const MyTabBar = ({
   tabWidth = 60,
   indicatorWidth = 20,
@@ -62,10 +62,12 @@ const MyTabBar = ({
   )
 }
 interface Props {
+  frozeTop?: number
   tabbarProps?: any
   routes: { key: string; title: string }[]
   renderScene: (info: any) => React.ReactElement | null | undefined
   renderScrollHeader: () => React.ComponentType<any> | React.ReactElement | null
+  makeScrollTrans: (scrollValue: Animated.SharedValue<number>) => void
 }
 
 const HeadTabView: React.FC<Props> = ({

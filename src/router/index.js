@@ -44,15 +44,16 @@ export default function App() {
   const userInfo = useSelector((state) => state.UserReducer.userInfo)
   return (
     <>
-      {/* <StatusBar
+      <StatusBar
         hidden={
           currentRoute === null ||
           (Platform.OS === 'ios' && currentRoute === 'VideoDetail')
         }
+        translucent={true}
         StatusBarAnimation="fade"
-        backgroundColor="#ce3d3a"
-        barStyle="light-content"
-      /> */}
+        // backgroundColor="#ce3d3a"
+        barStyle="dark-content"
+      />
       <NavigationContainer
         ref={routeNameRef}
         initialState={initialState}
@@ -72,15 +73,20 @@ export default function App() {
       >
         {userInfo.id ? (
           <Drawer.Navigator
-            // initialRouteName="Home"
+            initialRouteName="Home"
             overlayColor="transparent"
             keyboardDismissMode={'none'}
-            edgeWidth={200} //值待修改
+            edgeWidth={200}
+            // edgeWidth={0} //值待修改
             // hideStatusBar={true}
             // drawerType={'back'}
             drawerContent={(props) => <CustomDrawerContent {...props} />}
           >
-            <Drawer.Screen name="Root" component={RootRouteScreen} />
+            <Drawer.Screen
+              name="Root"
+              component={RootRouteScreen}
+              options={{ swipeEnabled: false }}
+            />
           </Drawer.Navigator>
         ) : (
           <SignInRouteScreen />
