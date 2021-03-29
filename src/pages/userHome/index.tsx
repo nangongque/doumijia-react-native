@@ -6,22 +6,14 @@ import Animated, {
   interpolate,
   Extrapolate,
 } from 'react-native-reanimated'
-import { Column, HeadTabView, MyText, Row, StatusBar } from '@ui'
+import { Column, HeadTabView, MyStatusBar, MyText, Row } from '@ui'
 import { MineHeader, Favorite, Liked } from './components'
 import { useSafeArea } from '@hooks'
 import { deviceWidth } from '@util'
-import { useFocusEffect } from '@react-navigation/native'
-
-const barProps: BarProps = {
-  translucent: true,
-  barStyle: 'light-content',
-}
 
 const UserHome = ({ navigation }) => {
-  const [styleStatusBar, setStyleStatusBar] = useState('light-content')
   const { top } = useSafeArea()
   const frozeTop = top + 44
-  // console.log({ top, frozeTop })
   const [scrollTrans, setScrollTrans] = useState(useSharedValue(0))
   const transYValue = useDerivedValue(() => {
     return interpolate(
@@ -32,33 +24,6 @@ const UserHome = ({ navigation }) => {
     )
   })
 
-  React.useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-      console.log('mine')
-      // setStyleStatusBar('light-content')
-      StatusBar.setBarStyle('light-content', true)
-    })
-
-    return unsubscribe
-  }, [navigation])
-
-  // useEffect(() => {
-  //   const focusListener = navigation.addListener('didFocus', () => {
-  //     console.log({ styleStatusBar })
-  //     setStyleStatusBar('light-content')
-  //   })
-
-  //   return () => {
-  //     focusListener.remove()
-  //   }
-  // }, [navigation])
-
-  // useFocusEffect(
-  //   React.useCallback(() => {
-  //     console.log('xxxx')
-  //     setStyleStatusBar('light-content')
-  //   }, []),
-  // )
   const headerOpacity = useDerivedValue(() => {
     return interpolate(
       scrollTrans.value,
@@ -121,15 +86,9 @@ const UserHome = ({ navigation }) => {
     }
     return null
   }
-  console.log({ styleStatusBar })
   return (
     <Column style={{ flex: 1 }}>
-      <StatusBar
-        // StatusBarAnimation="fade"
-        translucent={true}
-        // backgroundColor="#ce3d3a"
-        // barStyle={styleStatusBar}
-      />
+      <MyStatusBar isDarkStyle={false} />
 
       <HeadTabView
         makeScrollTrans={makeScrollTrans}

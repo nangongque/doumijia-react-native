@@ -1,17 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { Animated, Easing } from 'react-native'
 import { deviceHeight, deviceWidth, SetStatusBar } from '@util'
-import { Column } from '@ui'
+import { Column, MyStatusBar, StatusBar } from '@ui'
 import { GuideOptions } from './components'
-
-const barProps: BarProps = {
-  translucent: true,
-  barStyle: 'dark-content',
-}
 
 // 引导页
 const Guide = ({ navigation }) => {
-  SetStatusBar(barProps)
   const [animStop, setAnimStop] = useState(false)
   const scrollY = useRef(new Animated.Value(0)).current
   const scrollY2 = useRef(new Animated.Value(0)).current
@@ -48,6 +42,7 @@ const Guide = ({ navigation }) => {
   }, [])
   return (
     <Column style={{ flex: 1 }}>
+      <MyStatusBar isDarkStyle={false} />
       <Animated.Image
         source={require('@source/images/bbg.png')}
         style={{
