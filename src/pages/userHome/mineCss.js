@@ -3,7 +3,7 @@
  * created by lijian on 2021/02/27
  */
 import { StyleSheet } from '@ui'
-import { deviceWidth, px2Dp } from '@util'
+import { deviceWidth, adaptiveWidth } from '@util'
 
 const mineStyles = StyleSheet.create({
   surfaceGradient: {
@@ -14,38 +14,38 @@ const mineStyles = StyleSheet.create({
   },
   wordArt: {
     position: 'absolute',
-    top: px2Dp(40),
-    left: px2Dp(360),
+    top: adaptiveWidth(40),
+    left: adaptiveWidth(360),
   },
   lineOneGradient: {
-    width: px2Dp(45),
-    height: px2Dp(180),
-    margin: px2Dp(30),
+    width: adaptiveWidth(45),
+    height: adaptiveWidth(180),
+    margin: adaptiveWidth(30),
     transform: [{ rotate: '-15deg' }],
   },
   lineTwoGradient: {
     position: 'absolute',
-    width: px2Dp(45),
-    height: px2Dp(170),
+    width: adaptiveWidth(45),
+    height: adaptiveWidth(170),
     transform: [{ rotate: '-70deg' }],
-    left: px2Dp(95),
-    top: -px2Dp(5),
+    left: adaptiveWidth(95),
+    top: -adaptiveWidth(5),
   },
   lineThreeGradient: {
     position: 'absolute',
-    width: px2Dp(45),
-    height: px2Dp(190),
+    width: adaptiveWidth(45),
+    height: adaptiveWidth(190),
     transform: [{ rotate: '30deg' }],
-    left: px2Dp(190),
-    top: -px2Dp(60),
+    left: adaptiveWidth(190),
+    top: -adaptiveWidth(60),
   },
   lineFourGradient: {
     position: 'absolute',
-    width: px2Dp(45),
-    height: px2Dp(150),
+    width: adaptiveWidth(45),
+    height: adaptiveWidth(150),
     transform: [{ rotate: '-36deg' }],
-    left: px2Dp(280),
-    top: -px2Dp(72),
+    left: adaptiveWidth(280),
+    top: -adaptiveWidth(72),
   },
 })
 

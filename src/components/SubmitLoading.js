@@ -1,11 +1,12 @@
-import { Loading } from '@ui'
-import { px2Dp } from '@util'
 import React, { forwardRef, useState, useImperativeHandle } from 'react'
+import { Loading, Column } from '@ui'
 import Modal from 'react-native-modal'
-import { View, StyleSheet } from 'react-native'
+import { componentsStyles } from './css'
+
 const SubmitLoading = forwardRef((props, ref) => {
   const [text, setText] = useState('')
   const [visible, setVisible] = useState(false)
+
   useImperativeHandle(ref, () => ({
     show: (value) => {
       setVisible(true)
@@ -19,23 +20,11 @@ const SubmitLoading = forwardRef((props, ref) => {
       backdropTransitionOutTiming={0}
       hasBackdrop={false}
     >
-      <View style={styles.container}>
+      <Column style={componentsStyles.submitLoading}>
         <Loading text={text} />
-      </View>
+      </Column>
     </Modal>
   )
 })
 
 export default SubmitLoading
-
-const styles = StyleSheet.create({
-  container: {
-    height: px2Dp(240),
-    backgroundColor: '#00000080',
-    borderRadius: px2Dp(20),
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: px2Dp(30),
-  },
-})

@@ -1,11 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Animated, Easing } from 'react-native'
-import { deviceHeight, deviceWidth, SetStatusBar } from '@util'
-import { Column, MyStatusBar, StatusBar } from '@ui'
+import { deviceHeight } from '@util'
+import { useDimensions } from '@hooks'
+import { Column, MyStatusBar } from '@ui'
 import { GuideOptions } from './components'
+import { Animated, Easing } from 'react-native'
 
 // 引导页
 const Guide = ({ navigation }) => {
+  const { width } = useDimensions()
   const [animStop, setAnimStop] = useState(false)
   const scrollY = useRef(new Animated.Value(0)).current
   const scrollY2 = useRef(new Animated.Value(0)).current
@@ -46,7 +48,7 @@ const Guide = ({ navigation }) => {
       <Animated.Image
         source={require('@source/images/bbg.png')}
         style={{
-          width: deviceWidth,
+          width,
           height: deviceHeight,
           transform: [
             {
@@ -61,7 +63,7 @@ const Guide = ({ navigation }) => {
       <Animated.Image
         source={require('@source/images/bbg.png')}
         style={{
-          width: deviceWidth,
+          width,
           height: deviceHeight,
           transform: [
             {

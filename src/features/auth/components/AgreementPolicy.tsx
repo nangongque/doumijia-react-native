@@ -1,11 +1,12 @@
-import { GHWithoutFeedback, MyText, Row } from '@ui'
 import React from 'react'
 import { ThemeColors } from 'ui/theme'
 import { useNavigation } from '@hooks'
+import { GHWithoutFeedback, MyText, Row } from '@ui'
 
 const AgreementPolicy = (props) => {
-  const { style, textSize, textColor } = props
   const navigation = useNavigation()
+  const { style, textSize, textColor } = props
+
   return (
     <Row style={style}>
       <MyText size={textSize} color={textColor}>

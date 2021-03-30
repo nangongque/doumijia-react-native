@@ -1,0 +1,17 @@
+// import React from 'react'
+import { isiOS } from '@util'
+import { Dimensions } from '@ui'
+import ExtraDimensions from 'react-native-extra-dimensions-android'
+
+function useDimensions() {
+  const { width, height } = isiOS()
+    ? Dimensions.get('window')
+    : {
+        width: ExtraDimensions.get('REAL_WINDOW_WIDTH'),
+        height: ExtraDimensions.get('REAL_WINDOW_HEIGHT'),
+      }
+
+  return { width, height }
+}
+
+export default useDimensions

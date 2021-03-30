@@ -1,11 +1,10 @@
 import React, { useEffect, useMemo } from 'react'
-
-import useForm, { FormContext, useFormContext } from 'react-hook-form'
-import { Row, TextInput, MyText, StyleSheet, GHWithoutFeedback } from '@ui'
-import TokenButton from './TokenButton'
-import { ThemeColors } from 'ui/theme'
-import { deviceWidth, toastShort } from '@util'
 import Button from 'ui/button'
+import { toastShort } from '@util'
+import { ThemeColors } from 'ui/theme'
+import TokenButton from './TokenButton'
+import { Row, TextInput, StyleSheet } from '@ui'
+import useForm, { FormContext, useFormContext } from 'react-hook-form'
 
 const Provider = ({ children }) => {
   const methods = useForm()

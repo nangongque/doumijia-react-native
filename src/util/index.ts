@@ -14,7 +14,14 @@ export {
 export { default as deviceStorage } from './deviceStorage'
 
 //
-export { deviceWidth, deviceHeight, px2Dp, getFontSize } from './scale'
+// export { deviceWidth, deviceHeight, adaptiveWidth, getFontSize } from './scale'
+export {
+  deviceWidth,
+  deviceHeight,
+  adaptiveFont,
+  adaptiveWidth,
+  adaptiveHeight,
+} from './scale'
 
 //
 export { hexToRgb } from './colorConversion'

@@ -10,19 +10,19 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from '@ui'
-import { mineStyles } from '../mineCss'
-import * as iconPath from '../../../source/svg'
-import { deviceWidth, px2Dp } from '@util'
+import { adaptiveWidth } from '@util'
 import { ThemeColors } from 'ui/theme'
-import { useSelector, useNavigation } from '@hooks'
+import * as iconPath from '../../../source/svg'
 import { BlurView } from '@react-native-community/blur'
 import { CustomStackHeader } from 'ui/header/customStackHeader'
+import { useSelector, useNavigation, useDimensions } from '@hooks'
+
 const ACTIONS = ['关 注', '粉 丝', '积 分']
 
 interface MineHeaderProps {}
 const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
+  const { width } = useDimensions()
   const navigation = useNavigation()
-  console.log({ navigation })
   const userInfo = useSelector((state) => state.UserReducer.userInfo)
 
   const { username, doumiNo, signature } = userInfo
@@ -31,14 +31,14 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
       style={{
         flex: 1,
         alignItems: 'flex-start',
-        paddingHorizontal: px2Dp(40),
+        paddingHorizontal: adaptiveWidth(40),
       }}
     >
       <Image
         source={require('@source/images/bbb.jpg')}
         style={{
-          width: deviceWidth,
-          height: (deviceWidth * 813) / 1080,
+          width,
+          height: (width * 813) / 1080,
           position: 'absolute',
           top: 0,
           left: 0,
@@ -53,8 +53,8 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
           left: 0,
           bottom: 0,
           right: 0,
-          width: deviceWidth,
-          height: (deviceWidth * 813) / 1080,
+          width,
+          height: (width * 813) / 1080,
         }}
         blurType="light"
         blurAmount={5}
@@ -62,7 +62,7 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
       />
       <CustomStackHeader
         containerStyle={{
-          width: deviceWidth - px2Dp(80),
+          width: width - adaptiveWidth(80),
         }}
         renderLeft={() => {
           return (
@@ -83,7 +83,7 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
                   fill={[ThemeColors.White]}
                   path={iconPath.setting}
                   size={20}
-                  style={{ marginRight: px2Dp(30) }}
+                  style={{ marginRight: adaptiveWidth(30) }}
                 />
               </TouchableOpacity>
               <TouchableOpacity>
@@ -101,9 +101,9 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
       <Column
         style={{
           position: 'absolute',
-          right: px2Dp(40),
+          right: adaptiveWidth(40),
           top: 110,
-          width: px2Dp(50),
+          width: adaptiveWidth(50),
           backgroundColor: ThemeColors.LightGrey,
           paddingVertical: 5,
         }}
@@ -115,8 +115,8 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
       {/* <MyText>签到</MyText> */}
       {/* </GHWithoutFeedback> */}
       <Row style={{ marginTop: 15 }}>
-        <Avatar size={px2Dp(120)} />
-        <Column style={{ marginLeft: px2Dp(20) }}>
+        <Avatar size={adaptiveWidth(120)} />
+        <Column style={{ marginLeft: adaptiveWidth(20) }}>
           <Row>
             <MyText color={ThemeColors.White} size={20} weight="semibold">
               {username}
@@ -135,7 +135,7 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
       >
         {signature}
       </MyText>
-      <Row justify="space-between" style={{ width: deviceWidth - px2Dp(80) }}>
+      <Row justify="space-between" style={{ width: width - adaptiveWidth(80) }}>
         <Row style={{ marginBottom: 12 }} justify="space-between">
           {ACTIONS.map((item, index) => (
             <Column key={index}>
@@ -157,9 +157,9 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
             style={{
               borderWidth: 1,
               borderColor: ThemeColors.White,
-              paddingHorizontal: px2Dp(16),
-              paddingVertical: px2Dp(6),
-              borderRadius: px2Dp(24),
+              paddingHorizontal: adaptiveWidth(16),
+              paddingVertical: adaptiveWidth(6),
+              borderRadius: adaptiveWidth(24),
             }}
           >
             编辑资料

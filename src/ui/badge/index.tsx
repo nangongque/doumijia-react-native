@@ -1,7 +1,7 @@
 import React from 'react'
 import { ViewStyle } from 'react-native'
 import { Column, MyText, StyleSheet } from '@ui'
-import { px2Dp, getFontSize } from '@util'
+import { adaptiveFont, adaptiveWidth } from '@util'
 
 type Props = BadgeProps & {
   style: ViewStyle
@@ -21,15 +21,14 @@ export default Badge
 
 const styles = StyleSheet.create({
   container: {
-    width: px2Dp(40),
-    height: px2Dp(40),
+    width: adaptiveWidth(40),
+    height: adaptiveWidth(40),
     borderColor: '#fff',
-    borderWidth: px2Dp(4),
-    borderRadius: px2Dp(20),
-    backgroundColor: '#d33a31',
+    borderWidth: adaptiveWidth(4),
+    borderRadius: adaptiveWidth(20),
   },
   text: {
     color: '#fff',
-    fontSize: getFontSize(10),
+    fontSize: adaptiveFont(10),
   },
 })

@@ -1,9 +1,9 @@
 import React, { useCallback, useRef } from 'react'
-import { Form, Divider, MyText, Column } from '@ui'
-import { fetchToken, signInWithSms } from '@actions/user_action'
+import { Form, Divider, Column } from '@ui'
 import { FormProvider } from '@contexts/form'
-import SubmitLoading from '@components/SubmitLoading'
 import AgreementPolicy from './AgreementPolicy'
+import SubmitLoading from '@components/SubmitLoading'
+import { fetchToken, signInWithSms } from '@actions/user_action'
 
 const PhoneVerification = () => {
   const ref = useRef<any>()
@@ -24,9 +24,6 @@ const PhoneVerification = () => {
         <Divider height={15} />
         <Form.TokenInput sendToken={sendToken} for="phone" />
         <Divider height={1} color="#DEDEE3" />
-        {/* <MyText style={{ marginTop: 20, marginBottom: 36 }}>
-          登录注册代表同意《用户协议》《隐私政策》
-        </MyText> */}
         <AgreementPolicy style={{ marginTop: 20, marginBottom: 36 }} />
         <Form.SubmitButton onSubmit={onSubmit} title="同意协议并登录" />
         <SubmitLoading ref={ref} />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -6,12 +6,12 @@ import Animated, {
   interpolate,
   Extrapolate,
 } from 'react-native-reanimated'
-import { Column, HeadTabView, MyStatusBar, MyText, Row } from '@ui'
+import { useDimensions, useSafeArea } from '@hooks'
 import { MineHeader, Favorite, Liked } from './components'
-import { useSafeArea } from '@hooks'
-import { deviceWidth } from '@util'
+import { Column, HeadTabView, MyStatusBar, MyText, Row } from '@ui'
 
 const UserHome = ({ navigation }) => {
+  const { width } = useDimensions()
   const { top } = useSafeArea()
   const frozeTop = top + 44
   const [scrollTrans, setScrollTrans] = useState(useSharedValue(0))
@@ -54,7 +54,7 @@ const UserHome = ({ navigation }) => {
       >
         <Row
           style={{
-            width: deviceWidth,
+            width,
             backgroundColor: 'white',
             height: frozeTop,
           }}
@@ -91,11 +91,11 @@ const UserHome = ({ navigation }) => {
       <MyStatusBar isDarkStyle={false} />
 
       <HeadTabView
-        makeScrollTrans={makeScrollTrans}
-        frozeTop={frozeTop}
         routes={routes}
-        renderScrollHeader={renderHeader}
+        frozeTop={frozeTop}
         renderScene={renderScene}
+        makeScrollTrans={makeScrollTrans}
+        renderScrollHeader={renderHeader}
         tabbarProps={{
           alignSelf: true,
           style: { borderTopLeftRadius: 15, borderTopRightRadius: 15 },

@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react'
-import { MyText, StyleSheet } from '@ui'
-import { TabBar } from 'react-native-tab-view'
-import { CollapsibleHeaderTabView } from 'react-native-tab-view-collapsible-header'
 import { deviceWidth } from '@util'
 import { ThemeColors } from 'ui/theme'
+import { useDimensions } from '@hooks'
+import { MyText, StyleSheet } from '@ui'
 import Animated from 'react-native-reanimated'
+import { TabBar } from 'react-native-tab-view'
+import { CollapsibleHeaderTabView } from 'react-native-tab-view-collapsible-header'
+
 const MyTabBar = ({
   tabWidth = 60,
   indicatorWidth = 20,
@@ -12,11 +14,12 @@ const MyTabBar = ({
   alignSelf = false,
   ...restProps
 }) => {
+  const { width } = useDimensions()
   const tabCount = restProps.navigationState.routes.length
 
   const tabMarginLeft = useMemo(() => {
-    return alignSelf ? (deviceWidth - tabCount * tabWidth) / 2 : 0
-  }, [alignSelf, tabCount, tabWidth])
+    return alignSelf ? (width - tabCount * tabWidth) / 2 : 0
+  }, [alignSelf, width, tabCount, tabWidth])
 
   const indicatorLeft = useMemo(() => {
     return Math.floor(tabWidth / 2 - indicatorWidth / 2 - 1) + tabMarginLeft

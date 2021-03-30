@@ -3,6 +3,7 @@ import { Column, MyText, GHWithoutFeedback, MyStatusBar } from '@ui'
 import PhoneVerification from '@features/auth/components/PhoneVerification'
 import PasswordVerification from '@features/auth/components/PasswordVerification'
 import { CustomStackHeader } from 'ui/header/customStackHeader'
+import { adaptiveFont } from '@util'
 
 // 登录页
 const Sign = ({ navigation }) => {
@@ -26,7 +27,11 @@ const Sign = ({ navigation }) => {
       <CustomStackHeader
         renderRight={() => (
           <GHWithoutFeedback onPress={switchMethod}>
-            <MyText size={16} style={{ marginRight: 20 }} color="grey">
+            <MyText
+              color="grey"
+              size={adaptiveFont(28)}
+              style={{ marginRight: 20 }}
+            >
               {toggleText}
             </MyText>
           </GHWithoutFeedback>
@@ -34,8 +39,8 @@ const Sign = ({ navigation }) => {
       />
 
       <MyText
-        size={24}
         weight="semibold"
+        size={adaptiveFont(48)}
         style={{ marginTop: 45, marginBottom: 60 }}
       >
         {methodText}

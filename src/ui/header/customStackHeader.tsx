@@ -1,8 +1,8 @@
 import React from 'react'
-import { useNavigation, useSafeArea } from '@hooks'
-import { deviceWidth } from '@util'
 import { Row, MyText } from '@ui'
 import { HeaderButtons } from './headerButtons'
+import { useDimensions, useNavigation, useSafeArea } from '@hooks'
+
 const HEADER_HEIGHT = 44
 
 export interface StackHeaderProps {
@@ -27,15 +27,13 @@ const CustomStackHeader = ({
   onBackPress,
 }) => {
   const { top } = useSafeArea()
+  const { width } = useDimensions()
   const navigation = useNavigation()
   // const isInStack =
   //   navigation.dangerouslyGetParent()?.state.routeName === 'Main'
   return (
     <Row
-      style={[
-        { marginTop: top, height: HEADER_HEIGHT, width: deviceWidth },
-        containerStyle,
-      ]}
+      style={[{ marginTop: top, height: HEADER_HEIGHT, width }, containerStyle]}
     >
       {/* <HeaderButtons.Back tintColor={tintColor} onPress={onBackPress} /> */}
       {renderLeft && renderLeft()}
