@@ -7,7 +7,7 @@
 ## 运行
 
 ```
-git clone https://github.com/DaiYz/NetEaseCloudMusic
+git clone https://github.com/nangongmoyan/doumijia-react-native.git
 
 yarn or npm install
 
@@ -30,7 +30,9 @@ react-native run-ios
  ├── node_modules                   // 项目依赖包
  ├── src
  │   ├── actions                    // app 入口组件
- │   ├── components                 // app 入口组件
+ │   ├── components                 // 全局通用组件
+ │   │   ├── xxx.js                 // 组件类
+ │   │   └── css.js                 // 组件样式文件
  │   ├── containers                 // app 入口组件
  │   ├── contexts                   // app 入口组件
  │   ├── features                   // 业务相关的通用代码，包含抽象出来的 hooks， component， util
