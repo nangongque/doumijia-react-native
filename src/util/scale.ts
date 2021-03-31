@@ -35,6 +35,13 @@ function adaptiveHeight(size: number) {
   return resSize
 }
 
+function vw(percentageWidth: number) {
+  return Math.round(deviceWidth * (percentageWidth / 100))
+}
+
+function vh(percentageHeight: number) {
+  return Math.round(deviceHeight * (percentageHeight / 100))
+}
 // 设置字体
 function adaptiveFont(size: number) {
   if (deviceWidth < 360) {
@@ -54,6 +61,8 @@ function adaptiveFont(size: number) {
 }
 
 export {
+  vw,
+  vh,
   deviceWidth,
   deviceHeight,
   adaptiveFont,

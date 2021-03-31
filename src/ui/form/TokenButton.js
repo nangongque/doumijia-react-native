@@ -4,9 +4,11 @@ import { GHWithoutFeedback } from '@ui'
 import { Row } from 'ui/flex'
 import MyText from 'ui/myText'
 import { ThemeColors } from 'ui/theme'
+import { useLocale } from '@contexts/locale'
 const TIME = 61
 
 const TokenButton = (props) => {
+  const { t } = useLocale()
   const [count, setCount] = useState(TIME)
   const [start, setStart] = useState(false)
 
@@ -32,10 +34,12 @@ const TokenButton = (props) => {
     <GHWithoutFeedback onPress={onPress}>
       <Row>
         {isCounting ? (
-          <MyText size={14}>重新发送（{count}s）</MyText>
+          <MyText size={14}>
+            {t('LANGE13')}（{count}s）
+          </MyText>
         ) : (
           <MyText size={14} color={ThemeColors.Default}>
-            获取验证码
+            {t('LANGE12')}
           </MyText>
         )}
       </Row>

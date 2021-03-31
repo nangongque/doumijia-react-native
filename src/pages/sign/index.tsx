@@ -4,18 +4,20 @@ import PhoneVerification from '@features/auth/components/PhoneVerification'
 import PasswordVerification from '@features/auth/components/PasswordVerification'
 import { CustomStackHeader } from 'ui/header/customStackHeader'
 import { adaptiveFont } from '@util'
+import { useLocale } from '@contexts/locale'
 
 // 登录页
 const SignIn = ({ navigation }) => {
+  const { t } = useLocale()
   const [smsMethod, toggleMethod] = useState(true)
   const { methodText, toggleText } = useMemo(() => {
-    const sms = '验证码登录'
-    const password = '手机密码登录'
+    const sms = t('LANGE5')
+    const password = t('LANGE6')
     return {
-      methodText: smsMethod ? '登录后更精彩' : '手机密码登录',
+      methodText: smsMethod ? t('LANGE7') : t('LANGE8'),
       toggleText: smsMethod ? password : sms,
     }
-  }, [smsMethod])
+  }, [t, smsMethod])
 
   const switchMethod = () => {
     // layoutRef.current.animateNextTransition()

@@ -6,7 +6,7 @@ import { Guide } from './guide'
 import { Setting } from './setting'
 import { SignIn } from './sign'
 
-export const unLoggedStack = [
+const unLoggedStacks = [
   /** 引导*/
   {
     name: 'Guide',
@@ -27,7 +27,7 @@ export const unLoggedStack = [
   },
 ]
 
-export const loggedStacks = [
+const loggedStacks = [
   /** TabScreen*/
   {
     name: 'TabScreen',
@@ -59,3 +59,5 @@ export const loggedStacks = [
     options: { headerShow: false },
   },
 ]
+
+export { unLoggedStacks, loggedStacks }

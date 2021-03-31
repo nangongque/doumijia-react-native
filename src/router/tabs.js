@@ -6,11 +6,13 @@ import { Community } from '../pages/community'
 import { Market } from '../pages/market'
 import { UserHome } from '../pages/userHome'
 import { ThemeColors } from 'ui/theme'
+import { useLocale } from '@contexts/locale'
 
 // 选项卡页签tab navigator 实例
 const Tab = createBottomTabNavigator()
 
 function TabScreen() {
+  const { t } = useLocale()
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -45,22 +47,22 @@ function TabScreen() {
       <Tab.Screen
         name="Home"
         component={Home}
-        options={{ tabBarLabel: '首页' }}
+        options={{ tabBarLabel: t('LANGE19') }}
       />
       <Tab.Screen
         name="Community"
         component={Community}
-        options={{ tabBarLabel: '社区' }}
+        options={{ tabBarLabel: t('LANGE20') }}
       />
       <Tab.Screen
         name="Market"
         component={Market}
-        options={{ tabBarLabel: '商城' }}
+        options={{ tabBarLabel: t('LANGE21') }}
       />
       <Tab.Screen
         name="UserHome"
         component={UserHome}
-        options={{ tabBarLabel: '我的' }}
+        options={{ tabBarLabel: t('LANGE22') }}
       />
     </Tab.Navigator>
   )

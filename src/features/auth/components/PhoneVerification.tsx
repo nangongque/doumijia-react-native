@@ -4,8 +4,10 @@ import { FormProvider } from '@contexts/form'
 import AgreementPolicy from './AgreementPolicy'
 import SubmitLoading from '@components/SubmitLoading'
 import { fetchToken, signInWithSms } from '@actions/user_action'
+import { useLocale } from '@contexts/locale'
 
 const PhoneVerification = () => {
+  const { t } = useLocale()
   const ref = useRef<any>()
   const sendToken = useCallback((phone) => {
     ref.current.show('正在获取验证码')
@@ -25,7 +27,7 @@ const PhoneVerification = () => {
         <Form.TokenInput sendToken={sendToken} for="phone" />
         <Divider height={1} color="#DEDEE3" />
         <AgreementPolicy style={{ marginTop: 20, marginBottom: 36 }} />
-        <Form.SubmitButton onSubmit={onSubmit} title="同意协议并登录" />
+        <Form.SubmitButton onSubmit={onSubmit} title={t('LANGE14')} />
         <SubmitLoading ref={ref} />
       </Column>
     </FormProvider>

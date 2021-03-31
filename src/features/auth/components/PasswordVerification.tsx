@@ -2,8 +2,10 @@ import React from 'react'
 import { Form, Column, Divider } from '@ui'
 import { FormProvider } from '@contexts/form'
 import AgreementPolicy from './AgreementPolicy'
+import { useLocale } from '@contexts/locale'
 
 const PasswordVerification = () => {
+  const { t } = useLocale()
   const onSubmit = (data: SignInSmsParam) => {
     // console.log({ data })
   }
@@ -21,7 +23,7 @@ const PasswordVerification = () => {
         <Form.PasswordInput name="password" />
         <Divider height={1} color="#DEDEE3" />
         <AgreementPolicy style={{ marginTop: 20, marginBottom: 36 }} />
-        <Form.SubmitButton onSubmit={onSubmit} title="同意协议并登录" />
+        <Form.SubmitButton onSubmit={onSubmit} title={t('LANGE14')} />
       </Column>
     </FormProvider>
   )

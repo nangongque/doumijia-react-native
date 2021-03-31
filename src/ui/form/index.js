@@ -5,6 +5,7 @@ import { ThemeColors } from 'ui/theme'
 import TokenButton from './TokenButton'
 import { Row, TextInput, StyleSheet } from '@ui'
 import useForm, { FormContext, useFormContext } from 'react-hook-form'
+import { useLocale } from '@contexts/locale'
 
 const Provider = ({ children }) => {
   const methods = useForm()
@@ -59,11 +60,12 @@ const phoneValidation = {
   },
 }
 const PhoneInput = ({ ...props }) => {
+  const { t } = useLocale()
   return (
     <BasicInput
       name="phone"
       validation={phoneValidation}
-      placeholder="输入手机号码"
+      placeholder={t('LANGE9')}
       keyboardType="phone-pad"
       {...props}
     />
@@ -71,6 +73,7 @@ const PhoneInput = ({ ...props }) => {
 }
 
 const TokenInput = ({ sendToken }) => {
+  const { t } = useLocale()
   const { getValues, errors } = useFormContext()
 
   const onPress = (setStart) => {
@@ -85,7 +88,7 @@ const TokenInput = ({ sendToken }) => {
   return (
     <BasicInput
       name="token"
-      placeholder="输入验证码"
+      placeholder={t('LANGE10')}
       keyboardType="number-pad"
       renderRight={() => <TokenButton onPress={onPress} />}
     />
@@ -100,11 +103,12 @@ const passwordValidation = {
 }
 
 const PasswordInput = () => {
+  const { t } = useLocale()
   // const [isSecure, setSecure] = useState(true)
   return (
     <BasicInput
       name="password"
-      placeholder="输入密码"
+      placeholder={t('LANGE11')}
       secureTextEntry={true}
       validation={passwordValidation}
     />

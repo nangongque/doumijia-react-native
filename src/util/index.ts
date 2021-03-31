@@ -13,6 +13,8 @@ export { default as deviceStorage } from './deviceStorage'
 //
 // export { deviceWidth, deviceHeight, adaptiveWidth, getFontSize } from './scale'
 export {
+  vw,
+  vh,
   deviceWidth,
   deviceHeight,
   adaptiveFont,

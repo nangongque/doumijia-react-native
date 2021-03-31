@@ -1,11 +1,12 @@
 import React from 'react'
-import { adaptiveFont, adaptiveWidth } from '@util'
+import { adaptiveFont, adaptiveWidth, deviceWidth } from '@util'
 import { ThemeColors } from 'ui/theme'
 import * as iconPath from '../../../source/svg'
 import { useNavigation } from '@hooks'
 import AgreementPolicy from '@features/auth/components/AgreementPolicy'
 import { Column, Row, MyText, GHNativeFeedback, SvgIcon } from '@ui'
 import { guideStyles } from '../css'
+import { useLocale } from '@contexts/locale'
 
 const third = [
   { name: 'qq', path: iconPath.qq },
@@ -15,6 +16,7 @@ const third = [
 
 interface GuideOptionsProps {}
 const GuideOptions: React.FC<GuideOptionsProps> = React.memo(({}) => {
+  const { t } = useLocale()
   const navigation = useNavigation()
 
   return (
@@ -28,10 +30,10 @@ const GuideOptions: React.FC<GuideOptionsProps> = React.memo(({}) => {
           />
           <MyText
             style={{ marginLeft: 10 }}
-            size={adaptiveFont(24)}
+            size={adaptiveFont(14)}
             weight="medium"
           >
-            微信登录
+            {t('LANGE0')}
           </MyText>
         </Row>
       </GHNativeFeedback>
@@ -50,11 +52,11 @@ const GuideOptions: React.FC<GuideOptionsProps> = React.memo(({}) => {
           />
           <MyText
             style={{ marginLeft: 8 }}
-            size={adaptiveFont(24)}
+            size={adaptiveFont(14)}
             weight="medium"
             color={ThemeColors.White}
           >
-            手机号登录
+            {t('LANGE1')}
           </MyText>
         </Row>
       </GHNativeFeedback>
@@ -84,8 +86,9 @@ const GuideOptions: React.FC<GuideOptionsProps> = React.memo(({}) => {
         ))}
       </Row>
       <AgreementPolicy
-        textSize={adaptiveFont(22)}
+        textSize={adaptiveFont(12)}
         textColor={ThemeColors.White}
+        // style={{ width: deviceWidth - 50 }}
       />
     </Column>
   )
