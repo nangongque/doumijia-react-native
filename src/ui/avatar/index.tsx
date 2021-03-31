@@ -1,15 +1,9 @@
 import React from 'react'
-import { ViewStyle } from 'react-native'
 import { Column, Image, GHNativeFeedback } from '@ui'
 
 const defaultAvatar = require('@source/images/ic_default_avatar.jpg')
 
-type Props = AvatarProps & {
-  style?: ViewStyle
-  otherStyle?: ViewStyle
-}
-
-const Avatar: React.FC<Props> = ({
+const Avatar: React.FC<AvatarProps> = ({
   size = 30,
   avatar = defaultAvatar,
   disabled = false,

@@ -23,6 +23,7 @@ declare interface FlexProps {
   children?: React.ReactNode
   linear?: any
   elevation?: boolean
+  style?: object
 }
 
 declare type FontFamily = 'normal' | 'beba'
@@ -42,6 +43,7 @@ declare interface MyTextProps {
   height?: number
   textAlign?: 'center'
   children: string | React.ReactNode
+  style?: object
 }
 
 declare interface AvatarProps {
@@ -49,6 +51,8 @@ declare interface AvatarProps {
   avatar?: string
   disabled?: boolean
   userId?: number
+  style?: object
+  otherStyle?: object
 }
 
 declare interface DividerProps {
@@ -60,10 +64,13 @@ declare interface DividerProps {
    * divider color, default transparent
    */
   color?: string
+  style?: object
 }
 
 declare interface BadgeProps {
   number: number
+  style: object
+  labelStyle?: object
 }
 
 declare type StatusBarStyle = 'default' | 'light-content' | 'dark-content'
@@ -75,4 +82,61 @@ declare interface BarProps {
 
 declare interface LoadingProps {
   text?: string
+  style?: object
+}
+
+declare interface NavItemProps {
+  onPress?: () => {}
+  itemType?: 'switch' | 'normal'
+  leftIcon?: Element
+  itemStyle?: object
+  rightIcon?: Element
+  itemTitle: string
+  switchProps?: Element
+  itemTitleStyle?: object
+  rightContainer?: object
+  rightExtraTitle?: Element
+  showItemSeparator?: boolean
+}
+
+declare interface StackHeaderProps {
+  title?: string
+  renderRight?: () => React.ReactNode
+  renderLeft?: () => React.ReactNode
+  children?: React.ReactNode
+  style?: object
+  containerStyle?: object
+  tintColor?: string
+  onBackPress?: () => void
+  showBack?: boolean
+}
+
+declare interface IconProps {
+  name: string
+  size?: number
+  color?: string
+  onPress?: () => void
+  disabled?: boolean
+  /**图片右侧文字 */
+  text?: string | number
+  isTextLeft?: boolean
+  /**图标文字间距 */
+  textSpace?: number
+  style?: object
+  textStyle?: object
+  /**是否使用gesture-handler中的touchable */
+  gh?: boolean
+}
+
+declare interface LinearProps {
+  start?: { x: any; y: any }
+  end?: { x: any; y: any }
+  colors?: any
+  style?: object
+  children?: React.ReactNode
+}
+
+declare interface StatusBarProps {
+  isDarkStyle: boolean
+  statusBarBgColor?: string
 }

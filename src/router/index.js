@@ -1,10 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { ImageBackground, StatusBar, Platform, Column, Avatar } from '@ui'
-import { createDrawerNavigator } from '@react-navigation/drawer'
-import { NavigationContainer, InitialState } from '@react-navigation/native'
-import { RootRouteScreen, SignInRouteScreen } from './stacks'
+import React, { useRef, createRef, useState, useEffect } from 'react'
+import { Column, Avatar } from '@ui'
 import { useSelector } from '@hooks'
 import { ThemeColors } from 'ui/theme'
+import { RootRouteScreen, SignInRouteScreen } from './stacks'
+import { createDrawerNavigator } from '@react-navigation/drawer'
+import { NavigationContainer, InitialState } from '@react-navigation/native'
 
 const Drawer = createDrawerNavigator() //  抽屉drawer实例
 
@@ -32,30 +32,21 @@ function CustomDrawerContent({ navigation }) {
 
 export default function App() {
   const routeNameRef = useRef()
+  const navigationRef = createRef()
   const [currentRoute, setCurrentRoute] = useState('MainTabBar')
   const [initialState, setInitialState] = useState(InitialState)
 
-  // useEffect(() => {
-  //   const state = navigationRef.current.getRootState()
-  //   // Save the initial route name
-  //   routeNameRef.current = getActiveRouteName(state)
-  // }, [])
+  useEffect(() => {
+    const state = navigationRef.current.getRootState()
+    // Save the initial route name
+    routeNameRef.current = getActiveRouteName(state)
+  }, [navigationRef])
 
   const userInfo = useSelector((state) => state.UserReducer.userInfo)
   return (
     <>
-      {/* <StatusBar
-        hidden={
-          currentRoute === null ||
-          (Platform.OS === 'ios' && currentRoute === 'VideoDetail')
-        }
-        translucent={true}
-        StatusBarAnimation="fade"
-        // backgroundColor="#ce3d3a"
-        barStyle="dark-content"
-      /> */}
       <NavigationContainer
-        ref={routeNameRef}
+        ref={navigationRef}
         initialState={initialState}
         onStateChange={(state) => {
           const previousRouteName = routeNameRef.current
@@ -73,13 +64,10 @@ export default function App() {
       >
         {userInfo.id ? (
           <Drawer.Navigator
+            edgeWidth={200}
             initialRouteName="Home"
             overlayColor="transparent"
             keyboardDismissMode={'none'}
-            edgeWidth={200}
-            // edgeWidth={0} //值待修改
-            // hideStatusBar={true}
-            // drawerType={'back'}
             drawerContent={(props) => <CustomDrawerContent {...props} />}
           >
             <Drawer.Screen

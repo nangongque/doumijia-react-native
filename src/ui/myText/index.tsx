@@ -26,11 +26,7 @@ export const weights: Record<Weight, FontWeight> = {
   bold: '800',
 }
 
-type Props = MyTextProps & {
-  style?: ViewStyle
-}
-
-const MyText: React.FC<Props> = ({
+const MyText: React.FC<MyTextProps> = ({
   color = 'black',
   size = 12,
   textAlign = 'center',

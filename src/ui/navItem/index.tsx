@@ -1,26 +1,35 @@
 import React from 'react'
-import { Switch, Row, GHOpacity, Divider, StyleSheet, MyText, View } from '@ui'
-import { deviceWidth } from '@util'
-import SimpleLine from 'react-native-vector-icons/SimpleLineIcons'
-import { Column } from 'ui/flex'
+import {
+  Row,
+  Icon,
+  Column,
+  Switch,
+  MyText,
+  Divider,
+  StyleSheet,
+  TouchableOpacity,
+} from '@ui'
+import { adaptiveWidth, deviceWidth } from '@util'
 
-interface NavItemProps {}
 const NavItem: React.FC<NavItemProps> = ({
-  itemType,
-  switchProps,
-  rightExtraTitle,
-  rightIcon,
-  itemStyle,
+  onPress,
   leftIcon,
+  itemStyle,
   itemTitle,
+  switchProps,
+  itemTitleStyle,
+  rightContainer,
+  rightExtraTitle,
   showItemSeparator,
+  itemType = 'normal',
+  rightIcon = <Icon name="chevron-right" size={20} color={'#ddd'} />,
 }) => {
   const renderRight = () => {
     if (itemType === 'switch') {
       return (
         <Switch
           style={{ shadowOpacity: 0 }}
-          trackColor={{ true: '#ce3d3a' }}
+          trackColor={{ true: '#ce3d3a', false: 'grey' }}
           {...switchProps}
         />
       )
@@ -28,24 +37,36 @@ const NavItem: React.FC<NavItemProps> = ({
       return (
         <Row align="center" justify="flex-end" style={{ flex: 1 }}>
           {rightExtraTitle}
-          <SimpleLine name={'arrow-right'} size={12} color={'#bababa'} />
+          {rightIcon}
         </Row>
       )
     }
   }
-  const Element = itemType === 'switch' ? View : GHOpacity
 
   return (
-    <Element activeOpacity={0.7} style={[styles.container, itemStyle]}>
+    <TouchableOpacity
+      onPress={onPress}
+      disabled={!onPress}
+      activeOpacity={0.7}
+      style={[styles.container, itemStyle]}
+    >
       {leftIcon}
       <Column style={{ flex: 1 }}>
-        <Row style={{ flex: 1, paddingRight: 14 }}>
-          <MyText>{itemTitle}</MyText>
+        <Row
+          style={[{ flex: 1 }, rightContainer]}
+          align="center"
+          justify="space-between"
+        >
+          <MyText size={16} color="grey" style={{ ...itemTitleStyle }}>
+            {itemTitle}
+          </MyText>
           {renderRight()}
         </Row>
-        {showItemSeparator && <Divider height={0.6} color="#ddd" />}
+        {showItemSeparator && (
+          <Divider height={StyleSheet.hairlineWidth} color="#ddd" />
+        )}
       </Column>
-    </Element>
+    </TouchableOpacity>
   )
 }
 
@@ -53,9 +74,9 @@ export default NavItem
 
 const styles = StyleSheet.create({
   container: {
+    height: 46,
+    alignSelf: 'center',
     flexDirection: 'row',
-    height: 41,
-    width: deviceWidth,
-    backgroundColor: 'red',
+    width: deviceWidth - adaptiveWidth(60),
   },
 })

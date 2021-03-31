@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-import { ViewStyle } from 'react-native'
 import { View, StyleSheet, LinearGradient } from '@ui'
 
 function elevationShadowStyle() {
@@ -12,11 +11,7 @@ function elevationShadowStyle() {
   }
 }
 
-type Props = FlexProps & {
-  style?: ViewStyle
-}
-
-const Flex: React.FC<Props> = ({
+const Flex: React.FC<FlexProps> = ({
   style,
   linear,
   children,

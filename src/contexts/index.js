@@ -1,4 +1,5 @@
+export { FormProvider } from './form'
 export { ThemeContext, ThemeProvider } from './theme'
 export { NetinfoContext, NetinfoProvider } from './netinfo'
 export { LoadingContext, LoadingProvider } from './loading'
-export { FormProvider } from './form'
+export { LocaleContext, LocaleProvider, useLocale } from './locale'

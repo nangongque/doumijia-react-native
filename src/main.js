@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react'
 import { SafeAreaProvider, UIManager } from '@ui'
 import Navigator from './router'
-import { ThemeProvider, NetinfoProvider, LoadingProvider } from '@contexts'
+import {
+  ThemeProvider,
+  NetinfoProvider,
+  LoadingProvider,
+  LocaleContext,
+  LocaleProvider,
+} from '@contexts'
 import { RootSiblingParent } from 'react-native-root-siblings'
 import { Provider } from 'react-redux'
 import store from './store'
@@ -22,11 +28,11 @@ if (!__DEV__) {
 const DouMiJia = () => {
   UIManager.setLayoutAnimationEnabledExperimental &&
     UIManager.setLayoutAnimationEnabledExperimental(true)
-  // Orientation.unlockAllOrientations()
+  Orientation.unlockAllOrientations()
   async function initApp() {
     const userInfo = await deviceStorage.get('userInfo')
     if (userInfo !== null) {
-      console.log({ userInfo })
+      // console.log({ userInfo })
       store.dispatch(setUserInfo(userInfo.data))
     } else {
       deviceStorage.save('userInfo', '')
@@ -40,15 +46,21 @@ const DouMiJia = () => {
   return (
     <SafeAreaProvider>
       <ThemeProvider>
-        <NetinfoProvider>
-          <Provider store={store}>
-            <LoadingProvider>
-              <RootSiblingParent>
-                <Navigator />
-              </RootSiblingParent>
-            </LoadingProvider>
-          </Provider>
-        </NetinfoProvider>
+        <LocaleProvider>
+          <NetinfoProvider>
+            <Provider store={store}>
+              <LoadingProvider>
+                <LocaleContext.Consumer>
+                  {(value) => (
+                    <RootSiblingParent>
+                      <Navigator />
+                    </RootSiblingParent>
+                  )}
+                </LocaleContext.Consumer>
+              </LoadingProvider>
+            </Provider>
+          </NetinfoProvider>
+        </LocaleProvider>
       </ThemeProvider>
     </SafeAreaProvider>
   )

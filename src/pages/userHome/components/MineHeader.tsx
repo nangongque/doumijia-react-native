@@ -61,6 +61,7 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
         reducedTransparencyFallbackColor="white"
       />
       <CustomStackHeader
+        showBack={false}
         containerStyle={{
           width: width - adaptiveWidth(80),
         }}

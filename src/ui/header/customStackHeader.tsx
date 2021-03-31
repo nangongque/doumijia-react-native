@@ -5,17 +5,6 @@ import { useDimensions, useNavigation, useSafeArea } from '@hooks'
 
 const HEADER_HEIGHT = 44
 
-export interface StackHeaderProps {
-  title?: string
-  renderRight?: () => React.ReactNode
-  renderLeft?: () => React.ReactNode
-  children?: React.ReactNode
-  style?: object
-  containerStyle?: object
-  tintColor?: string
-  onBackPress?: () => void
-}
-
 const CustomStackHeader = ({
   title,
   renderLeft,
@@ -25,17 +14,18 @@ const CustomStackHeader = ({
   containerStyle,
   tintColor = '#222',
   onBackPress,
-}) => {
+  showBack = true,
+}: StackHeaderProps) => {
   const { top } = useSafeArea()
   const { width } = useDimensions()
-  const navigation = useNavigation()
-  // const isInStack =
-  //   navigation.dangerouslyGetParent()?.state.routeName === 'Main'
+
   return (
     <Row
       style={[{ marginTop: top, height: HEADER_HEIGHT, width }, containerStyle]}
     >
-      {/* <HeaderButtons.Back tintColor={tintColor} onPress={onBackPress} /> */}
+      {showBack && (
+        <HeaderButtons.Back tintColor={tintColor} onPress={onBackPress} />
+      )}
       {renderLeft && renderLeft()}
       <Row
         justify="center"

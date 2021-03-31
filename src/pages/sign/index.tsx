@@ -6,7 +6,7 @@ import { CustomStackHeader } from 'ui/header/customStackHeader'
 import { adaptiveFont } from '@util'
 
 // 登录页
-const Sign = ({ navigation }) => {
+const SignIn = ({ navigation }) => {
   const [smsMethod, toggleMethod] = useState(true)
   const { methodText, toggleText } = useMemo(() => {
     const sms = '验证码登录'
@@ -29,7 +29,7 @@ const Sign = ({ navigation }) => {
           <GHWithoutFeedback onPress={switchMethod}>
             <MyText
               color="grey"
-              size={adaptiveFont(28)}
+              size={adaptiveFont(14)}
               style={{ marginRight: 20 }}
             >
               {toggleText}
@@ -40,7 +40,7 @@ const Sign = ({ navigation }) => {
 
       <MyText
         weight="semibold"
-        size={adaptiveFont(48)}
+        size={adaptiveFont(24)}
         style={{ marginTop: 45, marginBottom: 60 }}
       >
         {methodText}
@@ -50,4 +50,4 @@ const Sign = ({ navigation }) => {
   )
 }
 
-export { Sign }
+export { SignIn }

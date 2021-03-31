@@ -1,7 +1,4 @@
 //
-export { SetStatusBar } from './statusBar'
-
-//
 export {
   isiOS,
   isiPhoneX,

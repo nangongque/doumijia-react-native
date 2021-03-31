@@ -1,12 +1,6 @@
 import React, { useCallback } from 'react'
-import { View, StatusBar, Platform } from '@ui'
+import { StatusBar, Platform } from '@ui'
 import { useFocusEffect } from '@react-navigation/native'
-import { statusBarHeight } from '@util'
-
-interface StatusBarProps {
-  isDarkStyle: boolean
-  statusBarBgColor?: string
-}
 
 const MyStatusBar: React.FC<StatusBarProps> = (props) => {
   const { isDarkStyle = true, statusBarBgColor = 'transparent' } = props
@@ -24,18 +18,11 @@ const MyStatusBar: React.FC<StatusBarProps> = (props) => {
   )
 
   return (
-    // <View
-    //   style={{
-    //     height: statusBarHeight,
-    //     backgroundColor: statusBarBgColor,
-    //   }}
-    // >
     <StatusBar
       translucent={true}
       backgroundColor="transparent"
       barStyle={barStyle}
     />
-    // </View>
   )
 }
 

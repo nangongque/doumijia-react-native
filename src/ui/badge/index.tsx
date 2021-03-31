@@ -1,14 +1,8 @@
 import React from 'react'
-import { ViewStyle } from 'react-native'
 import { Column, MyText, StyleSheet } from '@ui'
 import { adaptiveFont, adaptiveWidth } from '@util'
 
-type Props = BadgeProps & {
-  style: ViewStyle
-  labelStyle?: ViewStyle
-}
-
-const Badge: React.FC<Props> = ({ number, style, labelStyle }) => {
+const Badge: React.FC<BadgeProps> = ({ number, style, labelStyle }) => {
   const showNumber = number > 99 ? '...' : `${number}`
   return (
     <Column align="center" justify="center" style={[styles.container, style]}>

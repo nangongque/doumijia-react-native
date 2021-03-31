@@ -5,7 +5,7 @@ import AgreementPolicy from './AgreementPolicy'
 
 const PasswordVerification = () => {
   const onSubmit = (data: SignInSmsParam) => {
-    console.log({ data })
+    // console.log({ data })
   }
   return (
     <FormProvider>

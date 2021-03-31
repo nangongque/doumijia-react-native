@@ -7,6 +7,7 @@ import { View, Text, Button, Loading, MyStatusBar } from '@ui'
 // 首页
 const Home = ({ navigation }) => {
   const { width } = useDimensions()
+
   return (
     <View style={{ paddingTop: statusBarHeight }}>
       <MyStatusBar isDarkStyle={true} />
