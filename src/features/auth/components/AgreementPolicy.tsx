@@ -13,18 +13,18 @@ const AgreementPolicy = (props) => {
   return (
     <Row style={[{ width: vw(80) }, style]} wrap={'wrap'} justify="center">
       <MyText size={textSize} color={textColor}>
-        {t('LANGE2')}
+        {t('LANG2')}
       </MyText>
 
       <GHWithoutFeedback onPress={() => navigation.navigate('AppWebView')}>
         <MyText size={textSize} color={ThemeColors.Default}>
-          {t('LANGE3')}
+          {t('LANG3')}
         </MyText>
       </GHWithoutFeedback>
 
       <GHWithoutFeedback onPress={() => navigation.navigate('AppWebView')}>
         <MyText size={textSize} color={ThemeColors.Default}>
-          {t('LANGE4')}
+          {t('LANG4')}
         </MyText>
       </GHWithoutFeedback>
     </Row>

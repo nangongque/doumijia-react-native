@@ -23,7 +23,7 @@ const PasswordVerification = () => {
         <Form.PasswordInput name="password" />
         <Divider height={1} color="#DEDEE3" />
         <AgreementPolicy style={{ marginTop: 20, marginBottom: 36 }} />
-        <Form.SubmitButton onSubmit={onSubmit} title={t('LANGE14')} />
+        <Form.SubmitButton onSubmit={onSubmit} title={t('LANG14')} />
       </Column>
     </FormProvider>
   )

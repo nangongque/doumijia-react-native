@@ -4,7 +4,7 @@ import { ThemeColors } from 'ui/theme'
 import { useLocale } from '@contexts/locale'
 import WaveLoading from '@components/WaveLoading'
 
-const Loading: React.FC<LoadingProps> = ({ text = 'LANGE19', style }) => {
+const Loading: React.FC<LoadingProps> = ({ text = 'LANG19', style }) => {
   const { t } = useLocale()
   return (
     <Column align="center" style={style}>

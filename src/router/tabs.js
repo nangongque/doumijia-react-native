@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Home } from '../pages/home'
 import { Community } from '../pages/community'
 import { Market } from '../pages/market'
-import { UserHome } from '../pages/userHome'
+import { User } from '../pages/user'
 import { ThemeColors } from 'ui/theme'
 import { useLocale } from '@contexts/locale'
 
@@ -32,7 +32,7 @@ function TabScreen() {
             case 'Market':
               iconName = focused ? 'ios-cart' : 'ios-cart-outline'
               break
-            case 'UserHome':
+            case 'User':
               iconName = focused ? 'person' : 'person-outline'
               break
           }
@@ -47,22 +47,22 @@ function TabScreen() {
       <Tab.Screen
         name="Home"
         component={Home}
-        options={{ tabBarLabel: t('LANGE19') }}
+        options={{ tabBarLabel: t('LANG19') }}
       />
       <Tab.Screen
         name="Community"
         component={Community}
-        options={{ tabBarLabel: t('LANGE20') }}
+        options={{ tabBarLabel: t('LANG20') }}
       />
       <Tab.Screen
         name="Market"
         component={Market}
-        options={{ tabBarLabel: t('LANGE21') }}
+        options={{ tabBarLabel: t('LANG21') }}
       />
       <Tab.Screen
-        name="UserHome"
-        component={UserHome}
-        options={{ tabBarLabel: t('LANGE22') }}
+        name="User"
+        component={User}
+        options={{ tabBarLabel: t('LANG22') }}
       />
     </Tab.Navigator>
   )

@@ -100,7 +100,7 @@ declare interface NavItemProps {
 }
 
 declare interface StackHeaderProps {
-  title?: string
+  title?: string | Function
   renderRight?: () => React.ReactNode
   renderLeft?: () => React.ReactNode
   children?: React.ReactNode
@@ -109,6 +109,13 @@ declare interface StackHeaderProps {
   tintColor?: string
   onBackPress?: () => void
   showBack?: boolean
+  leftWidth?: number
+  rightWidth?: number
+}
+
+declare interface EditStackHeader {
+  title?: string | Function
+  onPress?: () => void
 }
 
 declare interface IconProps {
@@ -139,4 +146,13 @@ declare interface LinearProps {
 declare interface StatusBarProps {
   isDarkStyle: boolean
   statusBarBgColor?: string
+}
+
+declare interface ShadowBoxProps {
+  children: React.ReactNode
+  boxWidth?: number
+  boxHeight?: number
+  boxStyle?: object
+  boxBorderRadius?: number
+  boxBackgroundColor?: string
 }

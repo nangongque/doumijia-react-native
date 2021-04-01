@@ -1,8 +1,13 @@
 import React, { useState, useMemo } from 'react'
-import { Column, MyText, GHWithoutFeedback, MyStatusBar } from '@ui'
+import {
+  Column,
+  MyText,
+  GHWithoutFeedback,
+  MyStatusBar,
+  CustomStackHeader,
+} from '@ui'
 import PhoneVerification from '@features/auth/components/PhoneVerification'
 import PasswordVerification from '@features/auth/components/PasswordVerification'
-import { CustomStackHeader } from 'ui/header/customStackHeader'
 import { adaptiveFont } from '@util'
 import { useLocale } from '@contexts/locale'
 
@@ -11,10 +16,10 @@ const SignIn = ({ navigation }) => {
   const { t } = useLocale()
   const [smsMethod, toggleMethod] = useState(true)
   const { methodText, toggleText } = useMemo(() => {
-    const sms = t('LANGE5')
-    const password = t('LANGE6')
+    const sms = t('LANG5')
+    const password = t('LANG6')
     return {
-      methodText: smsMethod ? t('LANGE7') : t('LANGE8'),
+      methodText: smsMethod ? t('LANG7') : t('LANG8'),
       toggleText: smsMethod ? password : sms,
     }
   }, [t, smsMethod])

@@ -9,18 +9,19 @@ import {
   Divider,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  CustomStackHeader,
 } from '@ui'
-import { adaptiveWidth } from '@util'
+import { adaptiveWidth, vw } from '@util'
 import { ThemeColors } from 'ui/theme'
 import * as iconPath from '../../../source/svg'
 import { BlurView } from '@react-native-community/blur'
-import { CustomStackHeader } from 'ui/header/customStackHeader'
 import { useSelector, useNavigation, useDimensions } from '@hooks'
-
-const ACTIONS = ['关 注', '粉 丝', '积 分']
+import { useLocale } from '@contexts/locale'
 
 interface MineHeaderProps {}
 const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
+  const { t } = useLocale()
+  const ACTIONS = [t('LANG26'), t('LANG27'), t('LANG28')]
   const { width } = useDimensions()
   const navigation = useNavigation()
   const userInfo = useSelector((state) => state.UserReducer.userInfo)
@@ -62,9 +63,7 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
       />
       <CustomStackHeader
         showBack={false}
-        containerStyle={{
-          width: width - adaptiveWidth(80),
-        }}
+        containerStyle={{ marginLeft: -adaptiveWidth(40) }}
         renderLeft={() => {
           return (
             <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
@@ -110,7 +109,7 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
         }}
       >
         <MyText color={ThemeColors.White} size={15} weight="medium">
-          已签到
+          {t('LANG25')}
         </MyText>
       </Column>
       {/* <MyText>签到</MyText> */}
@@ -124,7 +123,7 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
             </MyText>
           </Row>
           <MyText size={11} color={ThemeColors.WhiteSmoke}>
-            豆米号：{doumiNo}
+            {t('LANG23')}：{doumiNo}
           </MyText>
           <Divider height={20} />
         </Column>
@@ -137,7 +136,10 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
         {signature}
       </MyText>
       <Row justify="space-between" style={{ width: width - adaptiveWidth(80) }}>
-        <Row style={{ marginBottom: 12 }} justify="space-between">
+        <Row
+          style={{ marginBottom: 12, width: vw(35) }}
+          justify="space-between"
+        >
           {ACTIONS.map((item, index) => (
             <Column key={index}>
               <MyText size={15} color={ThemeColors.White} weight="semibold">
@@ -163,7 +165,7 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
               borderRadius: adaptiveWidth(24),
             }}
           >
-            编辑资料
+            {t('LANG29')}
           </MyText>
         </TouchableWithoutFeedback>
       </Row>

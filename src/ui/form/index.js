@@ -65,7 +65,7 @@ const PhoneInput = ({ ...props }) => {
     <BasicInput
       name="phone"
       validation={phoneValidation}
-      placeholder={t('LANGE9')}
+      placeholder={t('LANG9')}
       keyboardType="phone-pad"
       {...props}
     />
@@ -88,7 +88,7 @@ const TokenInput = ({ sendToken }) => {
   return (
     <BasicInput
       name="token"
-      placeholder={t('LANGE10')}
+      placeholder={t('LANG10')}
       keyboardType="number-pad"
       renderRight={() => <TokenButton onPress={onPress} />}
     />
@@ -108,7 +108,7 @@ const PasswordInput = () => {
   return (
     <BasicInput
       name="password"
-      placeholder={t('LANGE11')}
+      placeholder={t('LANG11')}
       secureTextEntry={true}
       validation={passwordValidation}
     />

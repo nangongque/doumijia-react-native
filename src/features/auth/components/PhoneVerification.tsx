@@ -27,7 +27,7 @@ const PhoneVerification = () => {
         <Form.TokenInput sendToken={sendToken} for="phone" />
         <Divider height={1} color="#DEDEE3" />
         <AgreementPolicy style={{ marginTop: 20, marginBottom: 36 }} />
-        <Form.SubmitButton onSubmit={onSubmit} title={t('LANGE14')} />
+        <Form.SubmitButton onSubmit={onSubmit} title={t('LANG14')} />
         <SubmitLoading ref={ref} />
       </Column>
     </FormProvider>

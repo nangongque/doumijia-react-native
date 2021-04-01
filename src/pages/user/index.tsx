@@ -9,8 +9,10 @@ import Animated, {
 import { useDimensions, useSafeArea } from '@hooks'
 import { MineHeader, Favorite, Liked } from './components'
 import { Column, HeadTabView, MyStatusBar, MyText, Row } from '@ui'
+import { useLocale } from '@contexts/locale'
 
-const UserHome = ({ navigation }) => {
+const User = ({ navigation }) => {
+  const { t } = useLocale()
   const { width } = useDimensions()
   const { top } = useSafeArea()
   const frozeTop = top + 44
@@ -65,9 +67,8 @@ const UserHome = ({ navigation }) => {
     )
   }
   const [routes] = React.useState([
-    { key: 'Favorite', title: '收藏' },
-    { key: 'Liked', title: '赞过' },
-    { key: 'Liked1', title: '关中' },
+    { key: 'Favorite', title: t('LANG32') },
+    { key: 'Liked', title: t('LANG33') },
   ])
 
   const renderHeader = () => <MineHeader />
@@ -81,8 +82,6 @@ const UserHome = ({ navigation }) => {
       return <Favorite indexNo={0} />
     } else if (route.key === 'Liked') {
       return <Liked index={1} />
-    } else if (route.key === 'Liked1') {
-      return <Favorite indexNo={2} />
     }
     return null
   }
@@ -106,4 +105,4 @@ const UserHome = ({ navigation }) => {
   )
 }
 
-export { UserHome }
+export { User }

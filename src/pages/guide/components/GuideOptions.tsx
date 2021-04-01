@@ -33,7 +33,7 @@ const GuideOptions: React.FC<GuideOptionsProps> = React.memo(({}) => {
             size={adaptiveFont(14)}
             weight="medium"
           >
-            {t('LANGE0')}
+            {t('LANG0')}
           </MyText>
         </Row>
       </GHNativeFeedback>
@@ -56,7 +56,7 @@ const GuideOptions: React.FC<GuideOptionsProps> = React.memo(({}) => {
             weight="medium"
             color={ThemeColors.White}
           >
-            {t('LANGE1')}
+            {t('LANG1')}
           </MyText>
         </Row>
       </GHNativeFeedback>

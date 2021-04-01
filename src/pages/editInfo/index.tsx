@@ -1,48 +1,35 @@
+/**
+ * 编辑资料
+ * changed by lijianpo on 2021/04/01
+ */
 import React, { useMemo, useCallback } from 'react'
-import { Avatar, Column, MyStatusBar, MyText, NavItem, Icon } from '@ui'
-import { CustomStackHeader } from 'ui/header/customStackHeader'
+import { useSelector } from '@hooks'
 import { adaptiveWidth } from '@util'
 import { editInfoStyle } from './css'
 import { ThemeColors } from 'ui/theme'
-import { useSelector } from '@hooks'
-
-/**
- * 编辑资料
- * @param param0
- * @returns
- */
+import { useLocale } from '@contexts/locale'
+import {
+  Avatar,
+  Column,
+  MyStatusBar,
+  MyText,
+  NavItem,
+  Icon,
+  CustomStackHeader,
+} from '@ui'
 
 const ITEMS = [
-  {
-    title: '昵称',
-    route: 'UserName',
-  },
-  {
-    title: '豆米号',
-    route: 'DoumiNo',
-  },
-  {
-    title: '性别',
-    route: 'Sex',
-  },
-  {
-    title: '生日',
-    route: 'Birthday',
-  },
-  {
-    title: '地区',
-    route: 'Area',
-  },
-  {
-    title: '背景图',
-    route: '',
-  },
-  {
-    title: '收获地址',
-    route: '',
-  },
+  { route: 'UserName' },
+  { route: 'DoumiNo' },
+  { route: 'Sex' },
+  { route: 'Birthday' },
+  { route: 'Area' },
+  { route: 'PersonalProfile' },
+  { route: 'ShippingAddress' },
+  { route: 'BackgroundImage' },
 ]
 const EditInfo = ({ navigation }) => {
+  const { t } = useLocale()
   const userInfo = useSelector((state) => state.UserReducer.userInfo)
   const routes = useMemo(() => {
     const { username, doumiNo, sex, birthday, area } = userInfo
@@ -50,24 +37,34 @@ const EditInfo = ({ navigation }) => {
       const { route } = item
       switch (route) {
         case 'UserName':
-          return { ...item, rightTitle: username }
+          return { ...item, title: t('LANG34'), rightTitle: username }
         case 'DoumiNo':
-          return { ...item, rightTitle: doumiNo }
+          return { ...item, title: t('LANG35'), rightTitle: doumiNo }
         case 'Sex':
-          return { ...item, rightTitle: sex === 0 ? '男' : '女' }
+          return {
+            ...item,
+            title: t('LANG36'),
+            rightTitle: sex === 0 ? t('LANG42') : t('LANG43'),
+          }
         case 'Birthday':
-          return { ...item, rightTitle: birthday }
+          return { ...item, title: t('LANG37'), rightTitle: birthday }
         case 'Area':
-          return { ...item, rightTitle: area }
+          return { ...item, title: t('LANG38'), rightTitle: area }
+        case 'PersonalProfile':
+          return { ...item, title: t('LANG39'), rightTitle: area }
+        case 'ShippingAddress':
+          return { ...item, title: t('LANG40'), rightTitle: area }
+        case 'BackgroundImage':
+          return { ...item, title: t('LANG41'), rightTitle: area }
       }
       return item
     })
     return items
-  }, [userInfo])
+  }, [t, userInfo])
 
   const rightExtraTitle = useCallback((rightTitle) => {
     return (
-      <MyText size={16} color="grey" style={{ marginRight: 10 }}>
+      <MyText size={16} color="#222" style={{ marginRight: 10 }}>
         {rightTitle}
       </MyText>
     )
@@ -76,22 +73,23 @@ const EditInfo = ({ navigation }) => {
   const onPress = useCallback(() => {
     return navigation.navigate('EditName')
   }, [])
+
   return (
     <Column style={{ flex: 1, backgroundColor: 'white' }}>
       <MyStatusBar isDarkStyle={true} />
-      <CustomStackHeader title="编辑资料" />
+      <CustomStackHeader title={t('LANG29')} />
       <Column style={{ alignSelf: 'center', marginTop: 30 }}>
         <Avatar size={adaptiveWidth(200)} style={editInfoStyle.avatar} />
         <Column align="center" justify="center" style={editInfoStyle.camera}>
           <Icon name="camera" size={16} color={ThemeColors.White} />
         </Column>
       </Column>
-      {routes.map((route, index) => (
+      {routes.map(({ title, rightTitle }) => (
         <NavItem
-          key={index}
-          itemTitle={route.title}
+          key={title}
+          itemTitle={title}
           showItemSeparator={true}
-          rightExtraTitle={rightExtraTitle(route.rightTitle)}
+          rightExtraTitle={rightExtraTitle(rightTitle)}
           onPress={onPress}
         />
       ))}

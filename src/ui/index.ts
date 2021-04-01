@@ -1,3 +1,7 @@
+/**
+ * 导出UI组件
+ * changed by lijianpo on 2021/04/01
+ */
 export {
   View,
   Text,
@@ -47,6 +51,8 @@ export { default as MyStatusBar } from './myStatusBar'
 export { TwoColumnList } from './listview/TwoColumnList'
 export { default as MyListView } from './listview/ListView'
 export { default as MyHListView} from './listview/HListView'
+export { default as CustomStackHeader} from './header/customStackHeader'
 export { default as MyScrollView } from './scrollview'
 export { default as Button} from './button'
 export { default as Icon } from './icon'
+export { default as ShadowBox } from './shadowBox'
