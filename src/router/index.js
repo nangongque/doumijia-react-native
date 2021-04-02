@@ -1,11 +1,11 @@
 import React, { useRef, createRef, useState, useEffect } from 'react'
+import { vw } from '@util'
 import { useSelector } from '@hooks'
+import { ThemeColors } from 'ui/theme'
+import { DrawerScreen } from './drawer'
 import { RootRouteScreen, SignInRouteScreen } from './stacks'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer, InitialState } from '@react-navigation/native'
-import { DrawerScreen } from './drawer'
-import { vw } from '@util'
-import { ThemeColors } from 'ui/theme'
 
 const Drawer = createDrawerNavigator() //  抽屉drawer实例
 
@@ -34,48 +34,46 @@ export default function App() {
 
   const userInfo = useSelector((state) => state.UserReducer.userInfo)
   return (
-    <>
-      <NavigationContainer
-        ref={navigationRef}
-        initialState={initialState}
-        onStateChange={(state) => {
-          const previousRouteName = routeNameRef.current
-          const currentRouteName = getActiveRouteName(state)
+    <NavigationContainer
+      ref={navigationRef}
+      initialState={initialState}
+      onStateChange={(state) => {
+        const previousRouteName = routeNameRef.current
+        const currentRouteName = getActiveRouteName(state)
 
-          if (previousRouteName !== currentRouteName) {
-            // The line below uses the @react-native-firebase/analytics tracker
-            // Change this line to use another Mobile analytics SDK
-            console.log(previousRouteName, currentRouteName)
-            setCurrentRoute(currentRouteName)
-          }
-          // Save the current route name for later comparision
-          routeNameRef.current = currentRouteName
-        }}
-      >
-        {userInfo.id ? (
-          <Drawer.Navigator
-            drawerStyle={{
-              backgroundColor: ThemeColors.WhiteSmoke,
-              width: vw(75),
-            }}
-            drawerType="slide"
-            initialRouteName="Home"
-            overlayColor="transparent"
-            keyboardDismissMode={'none'}
-            drawerContent={(props) => (
-              <DrawerScreen {...props} userInfo={userInfo} />
-            )}
-          >
-            <Drawer.Screen
-              name="Root"
-              component={RootRouteScreen}
-              options={{ swipeEnabled: false }}
-            />
-          </Drawer.Navigator>
-        ) : (
-          <SignInRouteScreen />
-        )}
-      </NavigationContainer>
-    </>
+        if (previousRouteName !== currentRouteName) {
+          // The line below uses the @react-native-firebase/analytics tracker
+          // Change this line to use another Mobile analytics SDK
+          console.log(previousRouteName, currentRouteName)
+          setCurrentRoute(currentRouteName)
+        }
+        // Save the current route name for later comparision
+        routeNameRef.current = currentRouteName
+      }}
+    >
+      {userInfo.id !== '' ? (
+        <Drawer.Navigator
+          drawerStyle={{
+            width: vw(75),
+            backgroundColor: ThemeColors.WhiteSmoke,
+          }}
+          drawerType="slide"
+          initialRouteName="Home"
+          overlayColor="transparent"
+          keyboardDismissMode={'none'}
+          drawerContent={(props) => (
+            <DrawerScreen {...props} userInfo={userInfo} />
+          )}
+        >
+          <Drawer.Screen
+            name="Root"
+            component={RootRouteScreen}
+            options={{ swipeEnabled: false }}
+          />
+        </Drawer.Navigator>
+      ) : (
+        <SignInRouteScreen />
+      )}
+    </NavigationContainer>
   )
 }

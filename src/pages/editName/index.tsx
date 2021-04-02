@@ -2,22 +2,30 @@
  * 修改昵称
  * changed by lijianpo on 2021/04/01
  */
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { useSelector } from '@hooks'
 import { useLocale } from '@contexts/locale'
 import { Column, MyStatusBar, MyText, ShadowBox, TextInput } from '@ui'
 import { EditStackHeader } from '@features/common/components'
 import { adaptiveHeight, adaptiveWidth, deviceWidth } from '@util'
+import { changeUserInfo } from '@actions/user_action'
 
 const EditName = ({ navigation }) => {
   const { t } = useLocale()
   const userInfo = useSelector((state) => state.UserReducer.userInfo)
+  console.log({ userInfo })
   const userName = userInfo.username
   const [value, onChangeText] = useState(userName)
+
+  const onPress = useCallback(() => {
+    Object.assign(userInfo, { username: value })
+    changeUserInfo(userInfo, navigation.goBack())
+  }, [userInfo, value, navigation])
+
   return (
     <Column style={{ flex: 1 }}>
       <MyStatusBar isDarkStyle={true} />
-      <EditStackHeader title={t('LANG44')} />
+      <EditStackHeader title={t('LANG44')} onPress={onPress} />
 
       <ShadowBox>
         <TextInput

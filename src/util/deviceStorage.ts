@@ -40,7 +40,7 @@ const deviceStorage = {
   },
 
   delete(key) {
-    if (!Array.isArray(key)) {
+    if (Array.isArray(key)) {
       return AsyncStorage.multiRemove(key)
     }
     return AsyncStorage.removeItem(key)

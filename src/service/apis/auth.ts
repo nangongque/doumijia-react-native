@@ -1,11 +1,11 @@
-import { baseRequest } from '@service/clients'
+import { authRequest } from '@service/clients'
 import * as RU from '@util/ramdaUtil'
 import { ResponseError } from 'umi-request'
 /**
  * 发送短信验证码
  */
 const sendSms = async (phone: string) => {
-  return await baseRequest.post('/user/code', {
+  return await authRequest.post('/user/code', {
     data: {
       phone,
     },
@@ -17,7 +17,7 @@ const sendSms = async (phone: string) => {
  *
  */
 const postSignInWithSms = async ({ phone, token }: SignInSmsParam) => {
-  const res = await baseRequest.post(`/login/${phone}`, {
+  const res = await authRequest.post(`/login/${phone}`, {
     data: {
       code: token,
     },
@@ -33,7 +33,7 @@ const postSignInWithSms = async ({ phone, token }: SignInSmsParam) => {
  *
  */
 const queryUserById = async (id: Id) => {
-  const res = await baseRequest.post('/user/queryUserById', {
+  const res = await authRequest.post('/user/queryUserById', {
     data: {
       id,
     },

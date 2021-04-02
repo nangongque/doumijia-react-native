@@ -26,11 +26,12 @@ if (!__DEV__) {
 }
 
 const DouMiJia = () => {
-  UIManager.setLayoutAnimationEnabledExperimental &&
-    UIManager.setLayoutAnimationEnabledExperimental(true)
-  Orientation.unlockAllOrientations()
+  // UIManager.setLayoutAnimationEnabledExperimental &&
+  //   UIManager.setLayoutAnimationEnabledExperimental(true)
+  // Orientation.unlockAllOrientations()
   async function initApp() {
     const userInfo = await deviceStorage.get('userInfo')
+    console.log(userInfo)
     if (userInfo !== null) {
       // console.log({ userInfo })
       store.dispatch(setUserInfo(userInfo.data))

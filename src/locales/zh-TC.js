@@ -60,6 +60,12 @@ const zh_TC = {
   LANG58: '幫助與反饋',
   LANG59: '分享豆米家',
   LANG60: '關於',
+  LANG61: '我的',
+  LANG62: '其他',
+  LANG63: '系統',
+  LANG64: '退出登錄',
+  LANG65: '發送成功',
+  LANG66: '修改成功',
 }
 
 export default zh_TC

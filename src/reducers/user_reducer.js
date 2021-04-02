@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { USER } from '@util/action_types'
+import { deviceStorage } from '@util'
 
 const defaultUserInfo = {
   id: '',
@@ -12,6 +13,7 @@ function userInfo(state = defaultUserInfo, action) {
     case USER.UPDATE_USER_INFO:
       return Object.assign({}, state, action.data)
     case USER.CLEAR_USER_INFO:
+      deviceStorage.delete('userInfo')
       return { ...defaultUserInfo }
     default:
       return state

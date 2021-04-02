@@ -33,6 +33,8 @@ const NavItem: React.FC<NavItemProps> = ({
           {...switchProps}
         />
       )
+    } else if (itemType === 'hidden') {
+      return null
     } else {
       return (
         <Row align="center" justify="flex-end" style={{ flex: 1 }}>

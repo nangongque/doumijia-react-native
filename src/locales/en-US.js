@@ -61,6 +61,12 @@ const en_US = {
   LANG58: 'Help And Feedback',
   LANG59: 'Share Dou Mi',
   LANG60: 'About',
+  LANG61: 'Mine',
+  LANG62: 'Other',
+  LANG63: 'System',
+  LANG64: 'Sign Out',
+  LANG65: 'Successfully Sent',
+  LANG66: 'Successfully Modified',
 }
 
 export default en_US

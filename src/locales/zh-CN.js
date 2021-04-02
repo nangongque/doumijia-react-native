@@ -60,6 +60,12 @@ const zh_CN = {
   LANG58: '帮助与反馈',
   LANG59: '分享豆米家',
   LANG60: '关于',
+  LANG61: '我的',
+  LANG62: '其他',
+  LANG63: '系统',
+  LANG64: '退出登录',
+  LANG65: '发送成功',
+  LANG66: '修改成功',
 }
 
 export default zh_CN

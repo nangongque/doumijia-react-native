@@ -1,4 +1,5 @@
 import { postSignInWithSms, queryUserById, sendSms } from '@service/apis'
+import { postChangeUserInfo } from '@service/apis/user'
 import { deviceStorage, toastShort } from '@util'
 import { USER } from '@util/action_types'
 import store from '../store'
@@ -54,5 +55,23 @@ export const signInWithSms = async (params, cd) => {
     }
   } else {
     afterLogin(res.id, cd)
+  }
+}
+
+export const changeUserInfo = async (params, cd) => {
+  const res = await postChangeUserInfo(params)
+  console.log({ res })
+  if (
+    Object.prototype.toString.call(res) === '[object Object]' &&
+    'status' in res
+  ) {
+    const errorData = res.data
+    if (errorData) {
+      toastShort(errorData)
+    }
+  } else {
+    deviceStorage.update('userInfo', params)
+    store.dispatch(updateUserInfo(params))
+    toastShort('修改成功')
   }
 }

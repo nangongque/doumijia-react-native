@@ -1,6 +1,8 @@
 /**
- *
+ * 抽屉页
+ * changed by lijianpo on 2021/04/02
  */
+import React, { useEffect, useMemo, useCallback } from 'react'
 import {
   Avatar,
   Column,
@@ -11,15 +13,17 @@ import {
   StatusBar,
   SvgIcon,
 } from '@ui'
-import React, { useEffect, useMemo } from 'react'
-import { ThemeColors } from 'ui/theme'
+import { vw } from '@util'
 import {
-  DrawerContentScrollView,
   useIsDrawerOpen,
+  DrawerContentScrollView,
 } from '@react-navigation/drawer'
-import { useLocale } from '@contexts/locale'
-import * as iconPath from '../source/svg'
 import ShadowBox from 'ui/shadowBox'
+import { routerStyles } from './css'
+import { ThemeColors } from 'ui/theme'
+import * as iconPath from '../source/svg'
+import { useLocale } from '@contexts/locale'
+import { afterLogout } from '@actions/user_action'
 
 const firstItem = [
   { route: 'Order', lang: 'LANG50' },
@@ -50,6 +54,14 @@ function DrawerScreen(props) {
     StatusBar.setBarStyle(barStyle, true)
   }, [isDrawerOpen])
 
+  /**
+   * allRoutes数据结构
+   * [
+   *  [{route:'Order', lang:'LANG50',title:'Order', icon:<SvgIcon />}]
+   *  [{route:'Order', lang:'LANG50',title:'Order', icon:<SvgIcon />}]
+   * ]
+   */
+
   const allRoutes = useMemo(() => {
     return allItem.map((branche) => {
       return branche.map((item) => {
@@ -61,7 +73,7 @@ function DrawerScreen(props) {
         })
         switch (route) {
           case 'Order':
-            return { ...item }
+            return { ...item, parent: t('LANG61') }
           case 'Comment':
             return { ...item }
           case 'Favorite':
@@ -69,7 +81,7 @@ function DrawerScreen(props) {
           case 'Task':
             return { ...item }
           case 'Setting':
-            return { ...item }
+            return { ...item, parent: t('LANG62') }
           case 'Message':
             return { ...item }
           case 'PointsMall':
@@ -77,7 +89,7 @@ function DrawerScreen(props) {
           case 'Skin':
             return { ...item }
           case 'Help':
-            return { ...item }
+            return { ...item, parent: t('LANG63') }
           case 'Share':
             return { ...item }
           case 'About':
@@ -87,6 +99,13 @@ function DrawerScreen(props) {
     })
   }, [t])
 
+  const leftIcon = useCallback((item) => {
+    return (
+      <Column align="center" justify="center" style={{ marginRight: 10 }}>
+        {item.icon}
+      </Column>
+    )
+  }, [])
   return (
     <DrawerContentScrollView contentContainerStyle={{ paddingBottom: 30 }}>
       <Row>
@@ -95,41 +114,34 @@ function DrawerScreen(props) {
           {username}
         </MyText>
       </Row>
-      {allRoutes.map((all) => {
+      {allRoutes.map((all, index) => {
         return (
-          <ShadowBox boxWidth={240} boxStyle={{ marginTop: 30 }}>
-            {all.map((item, index) => (
+          <ShadowBox key={index} boxWidth={vw(64)} boxStyle={{ marginTop: 30 }}>
+            <NavItem
+              itemType="hidden"
+              showItemSeparator={true}
+              itemTitle={all[0].parent}
+              itemStyle={routerStyles.headItemStyle}
+              itemTitleStyle={routerStyles.headItemTitleStyle}
+            />
+            {all.map((item, i) => (
               <NavItem
+                key={i}
                 itemTitle={item.title}
-                itemTitleStyle={{ fontSize: 14, color: '#222' }}
-                showItemSeparator={index !== all.length - 1 ? true : false}
-                itemStyle={{
-                  width: 240,
-                  paddingHorizontal: 10,
-                }}
-                leftIcon={
-                  <Column
-                    align="center"
-                    justify="center"
-                    style={{ marginRight: 10 }}
-                  >
-                    {item.icon}
-                  </Column>
-                }
+                leftIcon={leftIcon(item)}
+                itemStyle={routerStyles.itemStyle}
+                itemTitleStyle={routerStyles.itemTitleStyle}
+                showItemSeparator={i !== all.length - 1 ? true : false}
               />
             ))}
           </ShadowBox>
         )
       })}
-      <ShadowBox boxWidth={240} boxStyle={{ marginTop: 30 }}>
-        <GHWithoutFeedback>
-          <Column
-            style={{ width: 220, height: 46 }}
-            align="center"
-            justify="center"
-          >
+      <ShadowBox boxWidth={vw(64)} boxStyle={{ marginTop: 30 }}>
+        <GHWithoutFeedback onPress={() => afterLogout()}>
+          <Column style={routerStyles.signOutContainer}>
             <MyText size={16} color={ThemeColors.Red}>
-              退出登录
+              {t('LANG64')}
             </MyText>
           </Column>
         </GHWithoutFeedback>
