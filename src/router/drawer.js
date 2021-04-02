@@ -46,7 +46,7 @@ const allItem = [firstItem, secondItem, thirdItem]
 function DrawerScreen(props) {
   const isDrawerOpen = useIsDrawerOpen()
   const { t } = useLocale()
-  const { userInfo } = props
+  const { userInfo, navigation } = props
   const { username } = userInfo
 
   useEffect(() => {
@@ -106,6 +106,14 @@ function DrawerScreen(props) {
       </Column>
     )
   }, [])
+
+  const onPress = useCallback(
+    (route) => {
+      return navigation.navigate(route)
+    },
+    [navigation],
+  )
+
   return (
     <DrawerContentScrollView contentContainerStyle={{ paddingBottom: 30 }}>
       <Row>
@@ -129,6 +137,7 @@ function DrawerScreen(props) {
                 key={i}
                 itemTitle={item.title}
                 leftIcon={leftIcon(item)}
+                onPress={() => onPress(item.route)}
                 itemStyle={routerStyles.itemStyle}
                 itemTitleStyle={routerStyles.itemTitleStyle}
                 showItemSeparator={i !== all.length - 1 ? true : false}

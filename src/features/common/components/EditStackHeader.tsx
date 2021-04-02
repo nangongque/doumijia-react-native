@@ -12,6 +12,8 @@ import { ThemeColors } from 'ui/theme'
 
 const EditStackHeader: React.FC<EditStackHeader> = ({
   onPress,
+  changeBgColor = false,
+  changeTextColor = false,
   ...restProps
 }) => {
   const { t } = useLocale()
@@ -35,19 +37,23 @@ const EditStackHeader: React.FC<EditStackHeader> = ({
         onPress={onPress}
         style={{
           width: adaptiveWidth(100),
-          backgroundColor: ThemeColors.Default,
+          backgroundColor: changeBgColor
+            ? ThemeColors.Default
+            : ThemeColors.Gainsboro,
           height: 28,
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: 14,
         }}
       >
-        <MyText size={14} color="grey">
+        <MyText
+          color={changeTextColor ? ThemeColors.White : ThemeColors.DarkGray}
+        >
           {t('LANG46')}
         </MyText>
       </GHWithoutFeedback>
     )
-  }, [t, onPress])
+  }, [t, onPress, changeBgColor, changeTextColor])
 
   return (
     <CustomStackHeader

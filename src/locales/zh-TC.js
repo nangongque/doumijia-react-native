@@ -66,6 +66,7 @@ const zh_TC = {
   LANG64: '退出登錄',
   LANG65: '發送成功',
   LANG66: '修改成功',
+  LANG67: '賬號安全',
 }
 
 export default zh_TC

@@ -59,7 +59,7 @@ const NavItem: React.FC<NavItemProps> = ({
           align="center"
           justify="space-between"
         >
-          <MyText size={16} color="grey" style={{ ...itemTitleStyle }}>
+          <MyText size={14} color="#222" style={{ ...itemTitleStyle }}>
             {itemTitle}
           </MyText>
           {renderRight()}

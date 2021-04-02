@@ -12,6 +12,8 @@ target 'doumijiaApp' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'RNSyanImagePicker', :path => '../node_modules/react-native-syan-image-picker'
+
   target 'doumijiaAppTests' do
     inherit! :complete
     # Pods for testing

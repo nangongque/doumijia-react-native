@@ -3,7 +3,8 @@
  */
 import * as RU from '@util/ramdaUtil'
 import { ResponseError } from 'umi-request'
-import { baseRequest } from '@service/clients'
+import { authRequest, baseRequest } from '@service/clients'
+
 /**
  * 更新用户资料
  */
@@ -18,4 +19,23 @@ const postChangeUserInfo = async (params) => {
   return res as '' | ResponseError
 }
 
-export { postChangeUserInfo }
+/**
+ * 更换头像
+ */
+
+const postReplaceAvatar = async (params) => {
+  const { id, file } = params
+  const res = await authRequest.post('/user/uploadImage', {
+    headers: { 'Content-Type': 'multipart/form-data' },
+    data: {
+      id,
+      file,
+    },
+    errorHandler: (e) => {
+      console.log(e)
+    },
+  })
+  console.log({ res })
+}
+
+export { postChangeUserInfo, postReplaceAvatar }

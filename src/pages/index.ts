@@ -1,5 +1,6 @@
 import AppWebView from '@features/browser'
 import { TabScreen } from '../router/tabs'
+import { AccountSecurity } from './accountSecurity'
 import { EditInfo } from './editInfo'
 import { EditName } from './editName'
 import { Guide } from './guide'
@@ -56,6 +57,12 @@ const loggedStacks = [
   {
     name: 'EditName',
     component: EditName,
+    options: { headerShow: false },
+  },
+  /**账号安全 */
+  {
+    name: 'AccountSecurity',
+    component: AccountSecurity,
     options: { headerShow: false },
   },
 ]

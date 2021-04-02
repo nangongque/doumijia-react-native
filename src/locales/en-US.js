@@ -67,6 +67,7 @@ const en_US = {
   LANG64: 'Sign Out',
   LANG65: 'Successfully Sent',
   LANG66: 'Successfully Modified',
+  LANG67: 'Account Security',
 }
 
 export default en_US

@@ -116,6 +116,8 @@ declare interface StackHeaderProps {
 declare interface EditStackHeader {
   title?: string | Function
   onPress?: () => void
+  changeBgColor?: boolean
+  changeTextColor?: boolean
 }
 
 declare interface IconProps {

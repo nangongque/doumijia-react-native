@@ -66,6 +66,7 @@ const zh_CN = {
   LANG64: '退出登录',
   LANG65: '发送成功',
   LANG66: '修改成功',
+  LANG67: '账号与安全',
 }
 
 export default zh_CN

@@ -1,5 +1,5 @@
 import { postSignInWithSms, queryUserById, sendSms } from '@service/apis'
-import { postChangeUserInfo } from '@service/apis/user'
+import { postChangeUserInfo, postReplaceAvatar } from '@service/apis/user'
 import { deviceStorage, toastShort } from '@util'
 import { USER } from '@util/action_types'
 import store from '../store'
@@ -74,4 +74,8 @@ export const changeUserInfo = async (params, cd) => {
     store.dispatch(updateUserInfo(params))
     toastShort('修改成功')
   }
+}
+
+export const replaceAvatar = async (params, cd) => {
+  const res = await postReplaceAvatar(params)
 }

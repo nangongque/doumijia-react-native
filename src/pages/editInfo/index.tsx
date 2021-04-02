@@ -16,10 +16,13 @@ import {
   NavItem,
   Icon,
   CustomStackHeader,
+  GHWithoutFeedback,
 } from '@ui'
-
+import SyanImagePicker from 'react-native-syan-image-picker'
+import { replaceAvatar } from '@actions/user_action'
+const options = { imageCount: 1 }
 const ITEMS = [
-  { route: 'UserName' },
+  { route: 'EditName' },
   { route: 'DoumiNo' },
   { route: 'Sex' },
   { route: 'Birthday' },
@@ -36,7 +39,7 @@ const EditInfo = ({ navigation }) => {
     const items = ITEMS.map((item) => {
       const { route } = item
       switch (route) {
-        case 'UserName':
+        case 'EditName':
           return { ...item, title: t('LANG34'), rightTitle: username }
         case 'DoumiNo':
           return { ...item, title: t('LANG35'), rightTitle: doumiNo }
@@ -70,29 +73,58 @@ const EditInfo = ({ navigation }) => {
     )
   }, [])
 
-  const onPress = useCallback(() => {
-    return navigation.navigate('EditName')
-  }, [])
+  const onPress = useCallback(
+    (route) => {
+      if (route === 'DoumiNo') return
+      return navigation.navigate(route)
+    },
+    [navigation],
+  )
 
+  const showImagePicker = useCallback(() => {
+    SyanImagePicker.showImagePicker(options, (err, selectedPhotos) => {
+      if (err) {
+        // 取消选择
+        return
+      }
+      const res = selectedPhotos[0]
+      console.log({ res })
+      const formData = new FormData()
+      formData.append('file', {
+        uri: res.uri,
+        type: 'image/jpeg',
+      })
+      console.log({ formData })
+      replaceAvatar({ id: userInfo.id, file: formData })
+
+      // 选择成功，渲染图片
+      // ...
+    })
+  }, [])
   return (
     <Column style={{ flex: 1, backgroundColor: 'white' }}>
       <MyStatusBar isDarkStyle={true} />
       <CustomStackHeader title={t('LANG29')} />
-      <Column style={{ alignSelf: 'center', marginTop: 30 }}>
-        <Avatar size={adaptiveWidth(200)} style={editInfoStyle.avatar} />
-        <Column align="center" justify="center" style={editInfoStyle.camera}>
-          <Icon name="camera" size={16} color={ThemeColors.White} />
+      <GHWithoutFeedback onPress={showImagePicker}>
+        <Column style={{ alignSelf: 'center', marginTop: 30 }}>
+          <Avatar size={adaptiveWidth(200)} style={editInfoStyle.avatar} />
+          <Column align="center" justify="center" style={editInfoStyle.camera}>
+            <Icon name="camera" size={16} color={ThemeColors.White} />
+          </Column>
         </Column>
-      </Column>
-      {routes.map(({ title, rightTitle }) => (
-        <NavItem
-          key={title}
-          itemTitle={title}
-          showItemSeparator={true}
-          rightExtraTitle={rightExtraTitle(rightTitle)}
-          onPress={onPress}
-        />
-      ))}
+      </GHWithoutFeedback>
+      {routes.map((item, index) => {
+        const { title, route, rightTitle } = item
+        return (
+          <NavItem
+            key={index}
+            itemTitle={title}
+            showItemSeparator={true}
+            rightExtraTitle={rightExtraTitle(rightTitle)}
+            onPress={() => onPress(route)}
+          />
+        )
+      })}
     </Column>
   )
 }

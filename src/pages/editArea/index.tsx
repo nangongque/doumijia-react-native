@@ -1,6 +1,6 @@
 /**
- * 修改昵称
- * changed by lijianpo on 2021/04/01
+ * 修改地区
+ * created by lijianpo on 2021/04/02
  */
 import React, { useState, useCallback, useMemo } from 'react'
 import { useSelector } from '@hooks'
@@ -10,7 +10,7 @@ import { EditStackHeader } from '@features/common/components'
 import { adaptiveHeight, adaptiveWidth } from '@util'
 import { changeUserInfo } from '@actions/user_action'
 
-const EditName = ({ navigation }) => {
+const EditArea = ({ navigation }) => {
   const { t } = useLocale()
   const userInfo = useSelector((state) => state.UserReducer.userInfo)
   const [value, onChangeText] = useState(userInfo.username)
@@ -65,4 +65,4 @@ const EditName = ({ navigation }) => {
   )
 }
 
-export { EditName }
+export { EditArea }
