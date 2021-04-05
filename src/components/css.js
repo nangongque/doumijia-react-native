@@ -4,17 +4,19 @@
  */
 
 import { StyleSheet } from '@ui'
-import { adaptiveWidth, adaptiveHeight } from '@util'
+import { adaptiveWidth, adaptiveHeight, vw } from '@util'
 
 const componentsStyles = StyleSheet.create({
   submitLoading: {
+    width: vw(32),
+    height: vw(32),
+    borderRadius: 10,
     alignSelf: 'center',
     alignItems: 'center',
-    justifyContent: 'center',
-    height: adaptiveHeight(240),
+    justifyContent: 'space-around',
     backgroundColor: '#00000080',
-    borderRadius: adaptiveWidth(20),
     paddingHorizontal: adaptiveWidth(30),
+    paddingVertical: adaptiveWidth(30),
   },
 })
 

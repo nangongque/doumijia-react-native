@@ -9,3 +9,9 @@ export const authRequest = extend({
 export const baseRequest = extend({
   prefix: config.baseUrl,
 })
+
+export const uploadImage = extend({
+  prefix: config.baseUrl,
+  requestType: 'form',
+  headers: {},
+})

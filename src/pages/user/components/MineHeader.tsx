@@ -115,7 +115,10 @@ const MineHeader: React.FC<MineHeaderProps> = React.memo(({}) => {
       {/* <MyText>签到</MyText> */}
       {/* </GHWithoutFeedback> */}
       <Row style={{ marginTop: 15 }}>
-        <Avatar size={adaptiveWidth(120)} />
+        <Avatar
+          size={adaptiveWidth(120)}
+          avatar={{ uri: `data:image/png;base64,${userInfo.headImg}` }}
+        />
         <Column style={{ marginLeft: adaptiveWidth(20) }}>
           <Row>
             <MyText color={ThemeColors.White} size={20} weight="semibold">

@@ -11,11 +11,11 @@ const PhoneVerification = () => {
   const ref = useRef<any>()
   const sendToken = useCallback((phone) => {
     ref.current.show('正在获取验证码')
-    fetchToken({ phone }, ref.current.hide())
+    fetchToken({ phone }, () => ref.current.hide())
   }, [])
   const onSubmit = (data: SignInSmsParam) => {
     ref.current.show('正在登录...')
-    signInWithSms(data, ref.current.hide())
+    signInWithSms(data, () => ref.current.hide())
   }
 
   return (

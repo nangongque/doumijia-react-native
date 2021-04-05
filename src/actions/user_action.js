@@ -46,7 +46,7 @@ export const fetchToken = (params, cb) => {
   })
 }
 
-export const signInWithSms = async (params, cd) => {
+export const signInWithSms = async (params, cb) => {
   const res = await postSignInWithSms(params)
   if ('status' in res) {
     const errorData = res.data
@@ -54,7 +54,7 @@ export const signInWithSms = async (params, cd) => {
       toastShort(errorData)
     }
   } else {
-    afterLogin(res.id, cd)
+    afterLogin(res.id, cb)
   }
 }
 
@@ -76,6 +76,22 @@ export const changeUserInfo = async (params, cd) => {
   }
 }
 
-export const replaceAvatar = async (params, cd) => {
+export const replaceAvatar = async (params, cb) => {
+  const { userInfo } = params
   const res = await postReplaceAvatar(params)
+  if (
+    Object.prototype.toString.call(res) === '[object Object]' &&
+    'status' in res
+  ) {
+    const errorData = res.data
+    if (errorData) {
+      toastShort(errorData)
+    }
+  } else {
+    Object.assign(userInfo, { headImg: res })
+    deviceStorage.update('userInfo', userInfo)
+    store.dispatch(updateUserInfo(userInfo))
+    cb && cb()
+    toastShort('更换成功')
+  }
 }

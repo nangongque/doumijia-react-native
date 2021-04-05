@@ -17,13 +17,14 @@ const Avatar: React.FC<AvatarProps> = ({
   }
 
   const imageStyle = { borderRadius: size / 2 }
-  const inner =
-    avatar === defaultAvatar || avatar === '' ? (
-      <Image
-        source={avatar}
-        style={[imageStyle, { width: size, height: size }]}
-      />
-    ) : null
+  const inner = (
+    // avatar === defaultAvatar || avatar === '' ? (
+    <Image
+      source={avatar}
+      style={[imageStyle, { width: size, height: size }]}
+    />
+  )
+  // )
   // <MyImage
   //   uri={avatar}
   //   width={size}

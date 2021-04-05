@@ -117,7 +117,7 @@ function DrawerScreen(props) {
   return (
     <DrawerContentScrollView contentContainerStyle={{ paddingBottom: 30 }}>
       <Row>
-        <Avatar />
+        <Avatar avatar={{ uri: `data:image/png;base64,${userInfo.headImg}` }} />
         <MyText size={14} weight="semibold">
           {username}
         </MyText>

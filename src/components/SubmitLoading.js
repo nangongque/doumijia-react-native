@@ -1,7 +1,9 @@
 import React, { forwardRef, useState, useImperativeHandle } from 'react'
-import { Loading, Column } from '@ui'
+import { Loading, Column, MyText } from '@ui'
+import { ActivityIndicator } from 'react-native'
 import Modal from 'react-native-modal'
 import { componentsStyles } from './css'
+import { ThemeColors } from 'ui/theme'
 
 const SubmitLoading = forwardRef((props, ref) => {
   const [text, setText] = useState('')
@@ -21,7 +23,10 @@ const SubmitLoading = forwardRef((props, ref) => {
       hasBackdrop={false}
     >
       <Column style={componentsStyles.submitLoading}>
-        <Loading text={text} />
+        <ActivityIndicator size="large" color={ThemeColors.Default} />
+        <MyText size={14} color={ThemeColors.Default}>
+          {text}
+        </MyText>
       </Column>
     </Modal>
   )
